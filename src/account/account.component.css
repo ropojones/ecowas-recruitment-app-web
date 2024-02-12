@@ -1,0 +1,102 @@
+.login-page, .register-page{
+    background-image: url(../assets/img/globe.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #dffedb;
+}
+
+
+.login-page .login-box{
+    min-width: 550px !important;
+}
+
+.register-page .login-box{
+  min-width: 750px !important;
+}
+
+.login-box .card, .register-box .card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 0px !important;
+    box-shadow: 2px 2px 2px 0.9;
+    padding: 50px 50px;
+    margin-right: auto;
+    margin-left:auto ;
+    margin-bottom: 20px;
+margin-top: 20px;
+box-shadow: 0 0.1rem 1rem 0.25rem rgba(0, 0, 0, 0.05) !important;
+}
+
+
+.login-box input[type="text"], .login-box input[type="email"], .login-box input[type=""] {
+    height: 65px;
+    border: 1px solid #f4f4f4!important; 
+    background-color: #dffedb;
+    padding: 20px;
+    border: 1px solid #f4f4f4!important; 
+  margin-bottom: 20px !important;
+    border: 1px solid var(--bs-gray-300);
+}
+.login-box input[type="password"]{
+    height: 65px !important;
+    padding: 20px;
+    background-color: #dffedb;
+    border: 1px solid #f4f4f4!important; 
+    margin-bottom: 20px !important;
+    border: 1px solid var(--bs-gray-300);
+
+}
+
+.login-box .logo-text{
+  color: #008080;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 50px;
+  text-align: center;
+}
+
+.login-box label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 100;
+  
+}
+.login-box button{
+ min-height: 30px;
+ padding: 10px;
+color: #fff !important;
+ /* background-color: #008080 !important; */
+}
+.login-box .card-footer {
+  padding: 0.75rem 1.25rem;
+  background-color: #fff !important;
+  border-top: 0 solid rgba(0,0,0,.125);
+}
+
+.login-box a{
+color:gray !important;
+text-decoration: none !important;
+}
+
+/* Set the background color of body to tan */
+body {
+    background-color: tan;
+  }
+  
+  /* On screens that are 992px or less, set the background color to blue */
+  @media screen and (max-width: 992px) {
+    body {
+      background-color: blue;
+    }
+  }
+  
+  /* On screens that are 600px or less, set the background color to olive */
+  @media screen and (max-width: 600px) {
+    body {
+      background-color: olive;
+    }
+  }

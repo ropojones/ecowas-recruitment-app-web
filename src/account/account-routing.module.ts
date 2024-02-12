@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account.component';
+import { ValidateComponent } from './validate/validate.component';
+ 
 
 @NgModule({
     imports: [
@@ -12,13 +14,22 @@ import { AccountComponent } from './account.component';
                 component: AccountComponent,
                 children: [
                     { path: 'login', component: LoginComponent },
-                    { path: 'register', component: RegisterComponent }
+                    { path: 'register', component: RegisterComponent },
+                    { path: 'validate', component: ValidateComponent },
                 ]
             }
+           
         ])
     ],
+
     exports: [
         RouterModule
     ]
 })
+
 export class AccountRoutingModule { }
+
+
+
+
+

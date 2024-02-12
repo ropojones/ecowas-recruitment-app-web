@@ -1,0 +1,133 @@
+<div class="container-fluid ecorecruit-page p-0 m-0">
+    <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-2 fw-bolder" href="#">
+                <img src="../../assets/img/logo.png" alt="Logo" width="50"
+                    class="d-inline-block align-text-middle me-2">
+                <span class="fs-3"> {{"Careers" | localize}}</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav ms-auto me-0 my-2 my-lg-0 p-3 navbar-nav-scroll"
+                    style="--bs-scroll-height: 250px;">
+                    <li class="nav-item me-2">
+                        <a class="nav-link fs-6" href="#" role="button">
+                            {{"HowToApply"|localize}}
+                        </a>
+
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link fs-6" href="#" role="button">
+                            {{"CurrentJobs"|localize}}
+                        </a>
+
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link fs-6" href="#">
+                            {{"MyApplication"|localize}}
+                        </a>
+                    </li>
+
+
+                </ul>
+                <div class="d-flex bg-success" role="search">
+                   
+                </div>
+            </div>
+            <!-- <div class="login-container bg-success p-3 h-100">
+                
+            </div> -->
+
+        </div>
+    </nav>
+    <div class="d-flex row vh-100  align-items-center">
+        <div class="row justify-content-middle align-items-center mb-5">
+            <div class="col-md-7 h-100 px-5">
+                <h1 class="mb-5">
+                    <div class="welcome text-success mb-2 px-5">{{"EcoWelcomeText"| localize}}</div>
+                    <div class="welcome-nl text-muted mb-4 px-5">{{"EcoWelcomeSubText"| localize}}</div>
+                    <p> {{""| localize}}{{""| localize}}</p>
+                </h1>
+                <div class="welcome-btn px-5">
+                    <button class="btn btn-lg btn-success shadow-sm px-5 py-2 rounded-0" (click)="getStarted();">{{"GetStarted"|
+                        localize}} &nbsp;<i class="fa-solid fa-arrow-right"></i> </button> &nbsp;&nbsp;&nbsp;
+                    <ng-container *ngFor="let language of languages">
+                        <a class="text-uppercase text-decoration-none text-secondary fw-bold"
+                            *ngIf="language.name != currentLanguage.name" href="javascript:void(0);"
+                            (click)="changeLanguage(language.name)">
+                            <span class="text-uppercase text-decoration-none" title="{{ language.displayName }}"
+                                [attr.class.current-language-icon]="
+                      language.name != currentLanguage.name
+                    ">
+                                {{ language.name }} &nbsp;&nbsp;
+                                <!-- <i class="d-inline-block mx-1 {{ language.icon }}"></i> -->
+                            </span>
+                        </a>
+                    </ng-container>
+                </div>
+
+            </div>
+            <div class="col-md-5 d-flex justify-content-center">
+                <div class="section-login">
+                    <div class="container">
+                        <div class="login-panel">
+                            <h4 class="h6">Online Banking</h4>
+                            <div class="login-panel-buttons">
+                                <ul class="nav nav-tabs" id="" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link no-history active show" id="personal-tab-prlr-ljr_y"
+                                            data-toggle="tab" href="#personal-prlr-ljr_y" role="tab"
+                                            aria-controls="personal-prlr-ljr_y" aria-selected="true">Internal
+                                            Candidates</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link no-history" id="business-tab-prlr-ljr_y" data-toggle="tab"
+                                            href="#business-prlr-ljr_y" role="tab" aria-controls="business-prlr-ljr_y"
+                                            aria-selected="false">External
+                                            Candidtes</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="">
+                                    <div class="tab-pane fade active show" id="personal-prlr-ljr_y" role="tabpanel"
+                                        aria-labelledby="personal-tab-prlr-ljr_y">
+                                        <div class="inline-links">
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="business-prlr-ljr_y" role="tabpanel"
+                                        aria-labelledby="business-tab-prlr-ljr_y">
+                                        <div class="inline-links">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<footer class="fixed-FF">
+    <div class=" row h-25 bg-success align-items-center d-flex justify-content-center text-center">
+
+        <div class="col-md-12 text-center copyright-text">
+            <p class="mb-2">
+                {{"Copyright" | localize }} &copy; {{ currentYear }}. {{ "AllRights" | localize }} <br />
+                {{
+                "ECORecruit" | localize
+                }}
+            </p>
+
+        </div>
+    </div>
+</footer>

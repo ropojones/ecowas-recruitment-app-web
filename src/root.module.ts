@@ -17,8 +17,7 @@ import { AppConsts } from '@shared/AppConsts';
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 
 import { RootComponent } from './root.component';
-import { AppInitializer } from './app-initializer';
-
+import { AppInitializer } from './app-initializer'; 
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
     return abp.localization.currentLanguage.name;
@@ -39,7 +38,7 @@ export function getCurrentLanguage(): string {
     CollapseModule.forRoot(),
     TabsModule.forRoot(),
     ServiceProxyModule,
-    RootRoutingModule,
+    RootRoutingModule, 
   ],
   declarations: [RootComponent],
   providers: [

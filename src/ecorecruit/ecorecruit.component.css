@@ -1,0 +1,243 @@
+.ecorecruit-page {
+    background-image: url('../assets/img/globe.png');
+    background-position-x: right;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-color: #dffedb;
+}
+
+.ecorecruit-job-section{
+    min-height: 445px !important;
+}
+.welcome {
+    font-size: 65px;
+    font-weight: 900;
+    line-height: 1em;
+}
+
+.welcome-nl {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.75em !important;
+}
+
+
+
+.login-panel {
+    background-color: #fff;
+  
+    box-shadow: 3px 3px 7px 0 rgba(0,0,0,.15);
+    border: 1px solid #e0e1e2;
+    text-align: center;
+    width: 350px;
+    min-height: 300px;
+}
+
+.login-panel h4 {
+    padding: 18px 0;
+    margin: 0;
+    font-size: 10px;
+    color: #424a52;
+    font-weight: 700
+}
+
+.login-panel-buttons {
+    background-color: #f7f8f8;
+    padding: 0
+}
+
+.login-panel-buttons .nav-tabs {
+    border: 0;
+    padding: 0 22px;
+    background: #f7f7f8
+}
+
+.login-panel-buttons .nav-tabs .nav-item {
+    width: 50%;
+    margin-bottom: 0;
+    padding: 0 10px
+}
+
+.login-panel-buttons .nav-tabs .nav-link {
+    border: 0;
+    background: transparent;
+    padding: 15px 0 11px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #676c72;
+    border-bottom: 2px solid transparent
+}
+
+.login-panel-buttons .nav-tabs .nav-link.active,.login-panel-buttons .nav-tabs .nav-link:hover {
+    border-color: #dd4f05;
+    color: #dd4f05
+}
+
+.login-panel-buttons .tab-content {
+    background: #eeeeef
+}
+
+.login-panel-buttons .tab-pane {
+    padding: 28px 40px
+}
+
+.login-panel .btn {
+    display: block
+}
+
+.login-panel .inline-links {
+    font-size: 14px;
+    margin-top: 22px
+}
+
+.login-panel .inline-links a {
+    padding-right: 13px;
+    margin-right: 8px;
+    line-height: 1.2;
+    display: inline-block;
+    border-right: 1px solid #b5b9bd;
+    color: #676c72
+}
+
+.login-panel .inline-links a:hover {
+    color: #dd4f05
+}
+
+.login-panel .inline-links a:last-child {
+    padding-right: 0;
+    margin-right: 0;
+    border: 0
+}
+
+
+/* // `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .welcome {
+        font-size: 30px;
+        line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-nl {
+        font-size: 14px;        
+        line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-btn{
+        padding: 10px 20px;
+    }
+    .copyright-text{
+        font-size: 12px;
+    }
+
+}
+
+/* // `md` applies to small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .welcome {
+        font-size: 30px;
+        line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-nl {
+        font-size: 14px;        
+        line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-btn{
+        padding: 10px 20px;
+    }
+    .copyright-text{
+        font-size: 12px;
+    }
+}
+
+/* // `lg` applies to medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .welcome {
+        font-size: 30px;
+        line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-nl {
+         line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-btn{
+        padding: 10px 20px;
+    }
+    .copyright-text{
+        font-size:12px;
+    }
+}
+
+/* // `xl` applies to large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .welcome {
+          line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-nl {
+         line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-btn{
+        padding: 10px 20px;
+    }
+    .copyright-text{
+        font-size: 16px;
+    }
+}
+
+/* // `xxl` applies to x-large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+    .welcome {
+          line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-nl {
+       
+        line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-btn{
+        padding: 10px 20px;
+    }
+    .copyright-text{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1399.98px) {
+    .welcome {
+          line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-nl {
+       
+        line-height: 1.3em;
+        padding: 10px 20px;
+    }
+    .welcome-btn{
+        padding: 10px 20px;
+    }
+    .copyright-text{
+        font-size: 16px;
+    }
+}
+@media (max-width: 767.98px) {
+    .section-home-carousel .flickity-page-dots .dot {
+        width:12px;
+        height: 12px;
+        margin: 0 0 0 12px
+    }
+}
+
+.section-login .container {
+    position: relative
+}
+
+@media (max-width: 767.98px) {
+    .login-panel {
+        display:none
+    }
+}

@@ -6,13 +6,17 @@ import {
   Renderer2
 } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
+import { AccountPageService } from './account.service';
 
 @Component({
   templateUrl: './account.component.html',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './account.component.css',
+  encapsulation: ViewEncapsulation.None,
+  providers:[AccountPageService]
 })
 export class AccountComponent extends AppComponentBase implements OnInit {
-  constructor(injector: Injector, private renderer: Renderer2) {
+  data: string;
+  constructor(injector: Injector, private renderer: Renderer2, private service: AccountPageService) {
     super(injector);
   }
 

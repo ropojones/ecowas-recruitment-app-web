@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, Output , Renderer2} from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { AppComponentBase } from '@shared/app-component-base';
@@ -9,6 +9,7 @@ import {
 } from '@shared/service-proxies/service-proxies';
 import { accountModuleAnimation } from '@shared/animations/routerTransition';
 import { AppAuthService } from '@shared/auth/app-auth.service';
+import { AccountPageService } from 'account/account.service';
 
 @Component({
   templateUrl: './register.component.html',
@@ -17,14 +18,20 @@ import { AppAuthService } from '@shared/auth/app-auth.service';
 export class RegisterComponent extends AppComponentBase {
   model: RegisterInput = new RegisterInput();
   saving = false;
-
+  data: string
   constructor(
     injector: Injector,
     private _accountService: AccountServiceProxy,
     private _router: Router,
-    private authService: AppAuthService
+    private authService: AppAuthService,
+    private renderer: Renderer2, 
   ) {
     super(injector);
+  }
+
+  ngOnInit(): void {
+    this.renderer.addClass(document.body, 'register-page');
+    this.renderer.removeClass(document.body, 'login-page');
   }
 
   save(): void {

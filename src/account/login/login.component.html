@@ -1,5 +1,5 @@
 ﻿<div [@routerTransition]>
-  <h4 class="text-center mb-3">{{ "LogIn" | localize }}</h4>
+  <h5 class="text-left mb-5 "> <strong> {{ "LogIn" | localize }} </strong></h5>
   <form novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()">
     <div class="form-group">
       <div class="input-group">
@@ -14,11 +14,11 @@
           #userNameOrEmailAddressModel="ngModel"
           #userNameOrEmailAddressEl
         />
-        <div class="input-group-append">
+        <!-- <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-user"></span>
           </div>
-        </div>
+        </div> -->
       </div>
       <abp-validation-summary
         [control]="userNameOrEmailAddressModel"
@@ -38,18 +38,18 @@
           #passwordModel="ngModel"
           #passwordEl
         />
-        <div class="input-group-append">
+        <!-- <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-lock"></span>
           </div>
-        </div>
+        </div> -->
       </div>
       <abp-validation-summary
         [control]="passwordModel"
         [controlEl]="passwordEl"
       ></abp-validation-summary>
     </div>
-    <div class="form-group row">
+    <div class="form-group row mb-4">
       <div class="col-md-8">
         <div class="custom-control custom-checkbox">
           <input
@@ -65,19 +65,31 @@
         </div>
       </div>
       <div class="col-md-4">
-        <button
-          type="submit"
-          class="btn btn-primary btn-block"
-          [disabled]="!loginForm.form.valid || submitting"
-        >
-          {{ "LogIn" | localize }}
-        </button>
+        <a [routerLink]="['../register']">
+           {{ "ForgotPassword" | localize }}
+        </a>
       </div>
+    </div>
+    <div class="form-group row mb-3">
+      <div class="col-md-12">
+        <button
+        type="submit"
+        class="btn btn-success btn-block"
+        [disabled]="!loginForm.form.valid || submitting"
+      >
+        {{ "LogIn" | localize }}
+      </button>
+      </div>
+     
+
     </div>
   </form>
   <p *ngIf="isSelfRegistrationAllowed" class="mb-1">
-    <a [routerLink]="['../register']">
-      <i class="fa fa-plus-circle"></i> {{ "Register" | localize }}
-    </a>
+    <span> {{ "NotRegisteredText" | localize }}</span><br>
+    <a [routerLink]="['../register']" class="pt-3">
+      {{ "RegisterNowText" | localize }}   
+   </a>  | <a [routerLink]="['../validate']" class="pt-3">
+     {{ "EmailActivationText" | localize }}
+ </a>
   </p>
 </div>

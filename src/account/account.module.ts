@@ -9,6 +9,7 @@ import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module
 import { SharedModule } from '@shared/shared.module';
 import { AccountComponent } from './account.component';
 import { LoginComponent } from './login/login.component';
+import { ValidateComponent } from './validate/validate.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountLanguagesComponent } from './layout/account-languages.component';
 import { AccountHeaderComponent } from './layout/account-header.component';
@@ -32,6 +33,7 @@ import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.compo
     declarations: [
         AccountComponent,
         LoginComponent,
+        ValidateComponent,
         RegisterComponent,
         AccountLanguagesComponent,
         AccountHeaderComponent,
@@ -39,6 +41,8 @@ import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.compo
         // tenant
         TenantChangeComponent,
         TenantChangeDialogComponent,
+        //validate
+
     ]
 })
 export class AccountModule {
