@@ -9748,14 +9748,22 @@ export interface ICreateExperienceDto {
 
 export class CreateJobDto implements ICreateJobDto {
     title: string | undefined;
-    year: number;
     jobRefNumber: string | undefined;
+    institution: string | undefined;
+    year: number;
     description: string | undefined;
     type: string | undefined;
-    location: string | undefined;
+    dutyStation: string | undefined;
     deadline: string | undefined;
     responsibilities: string | undefined;
+    keyCompetences: string | undefined;
     requirement: string | undefined;
+    directorate: string | undefined;
+    department: string | undefined;
+    division: string | undefined;
+    supervisor: string | undefined;
+    annualSalary: number;
+    ageLimit: number;
 
     constructor(data?: ICreateJobDto) {
         if (data) {
@@ -9769,14 +9777,22 @@ export class CreateJobDto implements ICreateJobDto {
     init(_data?: any) {
         if (_data) {
             this.title = _data["title"];
-            this.year = _data["year"];
             this.jobRefNumber = _data["jobRefNumber"];
+            this.institution = _data["institution"];
+            this.year = _data["year"];
             this.description = _data["description"];
             this.type = _data["type"];
-            this.location = _data["location"];
+            this.dutyStation = _data["dutyStation"];
             this.deadline = _data["deadline"];
             this.responsibilities = _data["responsibilities"];
+            this.keyCompetences = _data["keyCompetences"];
             this.requirement = _data["requirement"];
+            this.directorate = _data["directorate"];
+            this.department = _data["department"];
+            this.division = _data["division"];
+            this.supervisor = _data["supervisor"];
+            this.annualSalary = _data["annualSalary"];
+            this.ageLimit = _data["ageLimit"];
         }
     }
 
@@ -9790,14 +9806,22 @@ export class CreateJobDto implements ICreateJobDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["title"] = this.title;
-        data["year"] = this.year;
         data["jobRefNumber"] = this.jobRefNumber;
+        data["institution"] = this.institution;
+        data["year"] = this.year;
         data["description"] = this.description;
         data["type"] = this.type;
-        data["location"] = this.location;
+        data["dutyStation"] = this.dutyStation;
         data["deadline"] = this.deadline;
         data["responsibilities"] = this.responsibilities;
+        data["keyCompetences"] = this.keyCompetences;
         data["requirement"] = this.requirement;
+        data["directorate"] = this.directorate;
+        data["department"] = this.department;
+        data["division"] = this.division;
+        data["supervisor"] = this.supervisor;
+        data["annualSalary"] = this.annualSalary;
+        data["ageLimit"] = this.ageLimit;
         return data;
     }
 
@@ -9811,14 +9835,22 @@ export class CreateJobDto implements ICreateJobDto {
 
 export interface ICreateJobDto {
     title: string | undefined;
-    year: number;
     jobRefNumber: string | undefined;
+    institution: string | undefined;
+    year: number;
     description: string | undefined;
     type: string | undefined;
-    location: string | undefined;
+    dutyStation: string | undefined;
     deadline: string | undefined;
     responsibilities: string | undefined;
+    keyCompetences: string | undefined;
     requirement: string | undefined;
+    directorate: string | undefined;
+    department: string | undefined;
+    division: string | undefined;
+    supervisor: string | undefined;
+    annualSalary: number;
+    ageLimit: number;
 }
 
 export class CreateJobEcowasCompetenceDto implements ICreateJobEcowasCompetenceDto {
@@ -11203,15 +11235,22 @@ export interface IIsTenantAvailableOutput {
 export class JobDto implements IJobDto {
     id: number;
     title: string | undefined;
-    institution: string | undefined;
     jobRefNumber: string | undefined;
+    institution: string | undefined;
     year: number;
     description: string | undefined;
     type: string | undefined;
-    location: string | undefined;
+    dutyStation: string | undefined;
     deadline: string | undefined;
     responsibilities: string | undefined;
+    keyCompetences: string | undefined;
     requirement: string | undefined;
+    directorate: string | undefined;
+    department: string | undefined;
+    division: string | undefined;
+    supervisor: string | undefined;
+    annualSalary: number;
+    ageLimit: number;
 
     constructor(data?: IJobDto) {
         if (data) {
@@ -11226,15 +11265,22 @@ export class JobDto implements IJobDto {
         if (_data) {
             this.id = _data["id"];
             this.title = _data["title"];
-            this.institution = _data["institution"];
             this.jobRefNumber = _data["jobRefNumber"];
+            this.institution = _data["institution"];
             this.year = _data["year"];
             this.description = _data["description"];
             this.type = _data["type"];
-            this.location = _data["location"];
+            this.dutyStation = _data["dutyStation"];
             this.deadline = _data["deadline"];
             this.responsibilities = _data["responsibilities"];
+            this.keyCompetences = _data["keyCompetences"];
             this.requirement = _data["requirement"];
+            this.directorate = _data["directorate"];
+            this.department = _data["department"];
+            this.division = _data["division"];
+            this.supervisor = _data["supervisor"];
+            this.annualSalary = _data["annualSalary"];
+            this.ageLimit = _data["ageLimit"];
         }
     }
 
@@ -11249,15 +11295,22 @@ export class JobDto implements IJobDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["title"] = this.title;
-        data["institution"] = this.institution;
         data["jobRefNumber"] = this.jobRefNumber;
+        data["institution"] = this.institution;
         data["year"] = this.year;
         data["description"] = this.description;
         data["type"] = this.type;
-        data["location"] = this.location;
+        data["dutyStation"] = this.dutyStation;
         data["deadline"] = this.deadline;
         data["responsibilities"] = this.responsibilities;
+        data["keyCompetences"] = this.keyCompetences;
         data["requirement"] = this.requirement;
+        data["directorate"] = this.directorate;
+        data["department"] = this.department;
+        data["division"] = this.division;
+        data["supervisor"] = this.supervisor;
+        data["annualSalary"] = this.annualSalary;
+        data["ageLimit"] = this.ageLimit;
         return data;
     }
 
@@ -11272,15 +11325,22 @@ export class JobDto implements IJobDto {
 export interface IJobDto {
     id: number;
     title: string | undefined;
-    institution: string | undefined;
     jobRefNumber: string | undefined;
+    institution: string | undefined;
     year: number;
     description: string | undefined;
     type: string | undefined;
-    location: string | undefined;
+    dutyStation: string | undefined;
     deadline: string | undefined;
     responsibilities: string | undefined;
+    keyCompetences: string | undefined;
     requirement: string | undefined;
+    directorate: string | undefined;
+    department: string | undefined;
+    division: string | undefined;
+    supervisor: string | undefined;
+    annualSalary: number;
+    ageLimit: number;
 }
 
 export class JobDtoPagedResultDto implements IJobDtoPagedResultDto {
@@ -12120,6 +12180,7 @@ export class RegisterInput implements IRegisterInput {
     name: string;
     surname: string;
     userName: string;
+    phoneNumber: string;
     emailAddress: string;
     password: string;
     captchaResponse: string | undefined;
@@ -12138,6 +12199,7 @@ export class RegisterInput implements IRegisterInput {
             this.name = _data["name"];
             this.surname = _data["surname"];
             this.userName = _data["userName"];
+            this.phoneNumber = _data["phoneNumber"];
             this.emailAddress = _data["emailAddress"];
             this.password = _data["password"];
             this.captchaResponse = _data["captchaResponse"];
@@ -12156,6 +12218,7 @@ export class RegisterInput implements IRegisterInput {
         data["name"] = this.name;
         data["surname"] = this.surname;
         data["userName"] = this.userName;
+        data["phoneNumber"] = this.phoneNumber;
         data["emailAddress"] = this.emailAddress;
         data["password"] = this.password;
         data["captchaResponse"] = this.captchaResponse;
@@ -12174,6 +12237,7 @@ export interface IRegisterInput {
     name: string;
     surname: string;
     userName: string;
+    phoneNumber: string;
     emailAddress: string;
     password: string;
     captchaResponse: string | undefined;
