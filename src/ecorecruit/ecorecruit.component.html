@@ -1,7 +1,7 @@
 <div class="container-fluid ecorecruit-page p-0 m-0">
     <nav class="navbar navbar-expand-lg p-0">
         <div class="container-fluid">
-            <a class="navbar-brand fw-2 fw-bolder" href="#">
+            <a class="navbar-brand fw-2 fw-bolder" [routerLink]="('/')">
                 <img src="../../assets/img/logo.png" alt="Logo" width="50"
                     class="d-inline-block align-text-middle me-2">
                 <span class="fs-3"> {{"Careers" | localize}}</span>
@@ -14,19 +14,19 @@
                 <ul class="navbar-nav ms-auto me-0 my-2 my-lg-0 p-3 navbar-nav-scroll"
                     style="--bs-scroll-height: 250px;">
                     <li class="nav-item me-2">
-                        <a class="nav-link fs-6" href="#" role="button">
+                        <a class="nav-link fs-6"  [routerLink]="('/applicants/how-to-apply')" role="button">
                             {{"HowToApply"|localize}}
                         </a>
 
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link fs-6" href="#" role="button">
+                        <a class="nav-link fs-6"  [routerLink]="('/jobs')"  role="button">
                             {{"CurrentJobs"|localize}}
                         </a>
 
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link fs-6" href="#">
+                        <a class="nav-link fs-6"   [routerLink]="('/applicants/how-to-apply')" >
                             {{"MyApplication"|localize}}
                         </a>
                     </li>

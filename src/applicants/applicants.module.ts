@@ -12,7 +12,22 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApplicantHeaderComponent } from './layout/applicant-header/applicant-header.component';
+import { ApplicantFooterComponent } from './layout/applicant-footer/applicant-footer.component';
+import { ApplicantLeftNavbarComponent } from './layout/applicant-left-navbar/applicant-left-navbar.component';
+import { ApplicantLanguageMenuComponent } from './layout/applicant-language-menu/applicant-language-menu.component';
+import { ApplicantSidebarComponent } from './layout/applicant-sidebar/applicant-sidebar.component';
+import { ApplicantSidebarMenuComponent } from './layout/applicant-sidebar-menu/applicant-sidebar-menu.component';
+import { ApplicantSidebarUserPanelComponent } from './layout/applicant-sidebar-user-panel/applicant-sidebar-user-panel.component';
+import { ApplicantSidebarLogoComponent } from './layout/applicant-sidebar-logo/applicant-sidebar-logo.component';
+import { ApplicantHeaderUserMenuComponent } from './layout/applicant-header-user-menu/applicant-header-user-menu.component';
+import { HowToApplyComponent } from './how-to-apply/how-to-apply.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { VacanciesComponent } from './vacancies/vacancies.component';
+import { ApplicationsComponent } from './applications/applications.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { CreateProfileComponent } from './profile/create-profile/create-profile.component';
+
 
 // layout
 
@@ -23,10 +38,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     ApplicantsComponent,
     routingComponents,
+    ApplicantHeaderComponent,
+    ApplicantFooterComponent,
+    ApplicantLeftNavbarComponent,
+    ApplicantLanguageMenuComponent,
+    ApplicantSidebarComponent,
+    ApplicantSidebarMenuComponent,
+    ApplicantSidebarUserPanelComponent,
+    ApplicantSidebarLogoComponent,
+    ApplicantHeaderUserMenuComponent,
+    HowToApplyComponent,
+    ContactUsComponent,
+    VacanciesComponent,
+    ApplicationsComponent,
+    FaqsComponent,
+    CreateProfileComponent,
 
   ],
-  imports: [
-    CommonModule,
+  imports: [CommonModule, 
     ApplicantsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -41,7 +70,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxPaginationModule,
     RouterOutlet,
     RouterLink,
-    RouterLinkActive,
+    RouterLinkActive
     
   ]
 })

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApplicantDto } from '@shared/service-proxies/service-proxies';
 
 @Component({
   selector: 'app-update-profile',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './update-profile.component.css'
 })
 export class UpdateProfileComponent {
-
+applicant = new ApplicantDto ();
+id: number;
 }

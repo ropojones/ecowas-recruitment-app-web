@@ -8,6 +8,10 @@ import { DetailProfileComponent } from './profile/detail-profile/detail-profile.
 import { HeadlineProfileComponent } from './profile/headline-profile/headline-profile.component';
 import { ScoreProfileComponent } from './profile/score-profile/score-profile.component';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
+import { HowToApplyComponent } from './how-to-apply/how-to-apply.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { VacanciesComponent } from './vacancies/vacancies.component';
+import { ApplicationsComponent } from './applications/applications.component';
 
 const routes: Routes = [
   {
@@ -18,7 +22,11 @@ const routes: Routes = [
       { path: 'profile/detail-profile', component: DetailProfileComponent, data: { pageTitle: 'Applicant Details' } },
       { path: 'profile/headline-profile', component: HeadlineProfileComponent, data: { pageTitle: 'Applicant Headline' } },
       { path: 'profile/score-profile', component: ScoreProfileComponent, data: { pageTitle: 'Online CV Score' } },
-      { path: 'profile/update-profile', component: UpdateProfileComponent, data: { pageTitle: 'Update Profile' } } 
+      { path: 'profile/update-profile', component: UpdateProfileComponent, data: { pageTitle: 'Update Profile' } } ,
+      { path: 'how-to-apply', component: HowToApplyComponent, data: { pageTitle: 'How to apply' } } ,
+      { path: 'contact-us', component: ContactUsComponent, data: { pageTitle: 'Contact Us' } }, 
+      { path: 'vacancies', component: VacanciesComponent, data: { pageTitle: 'Contact Us' } } ,
+      { path: 'applications', component: ApplicationsComponent, data: { pageTitle: 'My Applications' } } ,
     ]
     
   }];
@@ -28,4 +36,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ApplicantsRoutingModule { }
-export const routingComponents = [ApplicantsComponent, ProfileComponent, DetailProfileComponent, HeadlineProfileComponent, ScoreProfileComponent, UpdateProfileComponent]
+export const routingComponents = [ApplicantsComponent, ProfileComponent, DetailProfileComponent, HeadlineProfileComponent, ScoreProfileComponent, UpdateProfileComponent, HowToApplyComponent, ContactUsComponent]

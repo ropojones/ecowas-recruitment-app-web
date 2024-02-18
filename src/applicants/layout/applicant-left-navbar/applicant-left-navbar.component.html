@@ -1,0 +1,35 @@
+<ul class="navbar-nav fw-semibold fs-6 text-uppercase">
+    <!-- <li class="nav-item">
+      <a class="nav-link" href="javascript:;" (click)="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </a>
+    </li> -->
+    <li class="nav-item me-2">
+      <a class="nav-link fs-6"  [routerLink]="('/applicants/how-to-apply')" role="button">
+          {{"HowToApply"|localize}}
+      </a>
+
+  </li>
+  <li class="nav-item me-2">
+      <a class="nav-link fs-6"  [routerLink]="('/applicants/vacancies')"  role="button">
+          {{"CurrentJobs"|localize}}
+      </a>
+
+  </li>
+  <li class="nav-item me-2">
+      <a class="nav-link fs-6"   [routerLink]="('/applicants/applications')" >
+          {{"MyApplication"|localize}}
+      </a>
+  </li>
+  <li class="nav-item me-2">
+      <a class="nav-link fs-6"  [routerLink]="['/applicants/profile']"  srouterLink="">
+          {{"CurriculumVitae"|localize}}
+      </a>
+  </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a class="nav-link" [routerLink]="['/applicants/contact-us']">
+        {{ "Support" | localize }}
+      </a>
+    </li>
+  </ul>
+  
