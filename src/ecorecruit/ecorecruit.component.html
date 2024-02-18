@@ -30,11 +30,16 @@
                             {{"MyApplication"|localize}}
                         </a>
                     </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link fs-6"  [routerLink]="['/applicants/applicant-profile']"  routerLink="">
+                            {{"CurriculumVitae"|localize}}
+                        </a>
+                    </li>
 
 
                 </ul>
                 <div class="d-flex bg-success" role="search">
-                   
+
                 </div>
             </div>
             <!-- <div class="login-container bg-success p-3 h-100">
@@ -52,7 +57,8 @@
                     <p> {{""| localize}}{{""| localize}}</p>
                 </h1>
                 <div class="welcome-btn px-5">
-                    <button class="btn btn-lg btn-success shadow-sm px-5 py-2 rounded-0" (click)="getStarted();">{{"GetStarted"|
+                    <button class="btn btn-lg btn-success shadow-sm px-5 py-2 rounded-0"
+                        (click)="getStarted();">{{"GetStarted"|
                         localize}} &nbsp;<i class="fa-solid fa-arrow-right"></i> </button> &nbsp;&nbsp;&nbsp;
                     <ng-container *ngFor="let language of languages">
                         <a class="text-uppercase text-decoration-none text-secondary fw-bold"
@@ -74,36 +80,9 @@
                 <div class="section-login">
                     <div class="container">
                         <div class="login-panel">
-                            <h4 class="h6">Online Banking</h4>
+                            <h4 class="p-3 text-bold">ECOWAS Careers</h4>
                             <div class="login-panel-buttons">
-                                <ul class="nav nav-tabs" id="" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link no-history active show" id="personal-tab-prlr-ljr_y"
-                                            data-toggle="tab" href="#personal-prlr-ljr_y" role="tab"
-                                            aria-controls="personal-prlr-ljr_y" aria-selected="true">Internal
-                                            Candidates</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link no-history" id="business-tab-prlr-ljr_y" data-toggle="tab"
-                                            href="#business-prlr-ljr_y" role="tab" aria-controls="business-prlr-ljr_y"
-                                            aria-selected="false">External
-                                            Candidtes</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="">
-                                    <div class="tab-pane fade active show" id="personal-prlr-ljr_y" role="tabpanel"
-                                        aria-labelledby="personal-tab-prlr-ljr_y">
-                                        <div class="inline-links">
-
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="business-prlr-ljr_y" role="tabpanel"
-                                        aria-labelledby="business-tab-prlr-ljr_y">
-                                        <div class="inline-links">
-
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

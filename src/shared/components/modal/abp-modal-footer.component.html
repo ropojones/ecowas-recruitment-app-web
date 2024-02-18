@@ -1,13 +1,13 @@
-<div class="modal-footer justify-content-between">
+<div class="modal-footer justify-content-between px-5 py-3">
   <button
     type="button"
-    class="btn btn-default"
+    class="btn btn-default  rounded-0 px-3"
     [disabled]="cancelDisabled"
     (click)="onCancelClick.emit()"
   >
     {{ cancelLabel }}
   </button>
-  <button type="submit" class="btn btn-primary" [disabled]="saveDisabled">
+  <button type="submit" class="btn btn-success rounded-0 px-5" [disabled]="saveDisabled">
     {{ saveLabel }}
   </button>
 </div>

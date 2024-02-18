@@ -16,12 +16,32 @@
                 <!-- <div class="card-header  bg-success border border-0 p-2">
                     {{"AboutMe" | localize}}
                 </div> -->
-                <div class="card-body bg-success p-5">
+                <div class="card-body bg-success p-5 text-center lh-base">
+                    <img  class="img-profile mb-4 border border-white border-3" src="../../../assets/img/user.png" height="150"/>
+                    <h3>{{ applicant.firstName + " " + applicant.lastName}}</h3>
+                    
+                    <h5 *ngIf="applicant.headline else headlineBlock">{{ applicant.headline }}</h5><br>
+                    <ng-template #headlineBlock>
+                       <h5> {{"Headline" | localize}}: {{"NotSpecified" | localize}}</h5>
+                    </ng-template>
+                    <h6 *ngIf="applicant.dateOfBirth else experienceBlock"> {{"Experience" | localize}}: {{ applicant.yearsOfExperience}} {{"Years" | localize}}</h6>            
+                    <ng-template #experienceBlock>
+                     <h6>  {{"Experience" | localize}}: {{"NotSpecified" | localize}}</h6> 
+                    </ng-template>
+                    <h6 *ngIf="applicant.dateOfBirth else dobBlock"> {{"DateofBirth" | localize}}: {{applicant.dateOfBirth.toDate()| date }}</h6>
+                    <ng-template #dobBlock>
+                   <h6>     {{"DateofBirth" | localize}}: {{"NotSpecified" | localize}}</h6>
+                    </ng-template>
+
+                    <h6  *ngIf="applicant.country else countryBlock"> {{"Country" | localize}}: {{ applicant.country }}</h6>
+                    <ng-template #countryBlock>
+                      <h6>  {{"Country" | localize}}: {{"NotSpecified" | localize}}</h6>
+                    </ng-template>
 
                 </div>
                 <!-- <div class="card-footer  bg-success p-2">
 
-                </div>  -->
+                </div> -->
             </div>
         </div>
     </section>
@@ -30,14 +50,17 @@
         <div class="container-fluid">
             <div class="card rounded-0">
 
-                <div class="card-header bg-white border border-0 p-3 text-secondary fs-5 fw-medium align-items-end">
-                    {{"AboutMe" | localize}}
+                <div class="card-header bg-white border border-0 p-3  fw-medium align-items-end">
+                    <p class="fs-5"> {{"EmploymentAvailability" | localize}}</p>
+
+                    <br>
+                    <span class="text-secondary"> {{"EmploymentAvailabilityText" | localize}}<br></span>
                 </div>
                 <div class="card-body bg-white">
 
                 </div>
                 <div class="card-footer bg-white p-3 text-right">
-                    <a class="text-uppercase">{{"Update" | localize}}</a>
+                    <a class="text-uppercase text-decoration-none text-success text-bold link-success" href="javascript:0;"  (click)="createApplicant()"> {{"Update" | localize}} </a>
                 </div>
             </div>
         </div>

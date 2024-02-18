@@ -38,14 +38,14 @@ box-shadow: 0 0.1rem 1rem 0.25rem rgba(0, 0, 0, 0.05) !important;
     height: 65px;
     border: 1px solid #f4f4f4!important; 
     background-color: #dffedb;
-    padding: 20px;
+    padding: 20px 30px;
     border: 1px solid #f4f4f4!important; 
   margin-bottom: 20px !important;
     border: 1px solid var(--bs-gray-300);
 }
 .login-box input[type="password"]{
     height: 65px !important;
-    padding: 20px;
+    padding: 20px 30px;
     background-color: #dffedb;
     border: 1px solid #f4f4f4!important; 
     margin-bottom: 20px !important;

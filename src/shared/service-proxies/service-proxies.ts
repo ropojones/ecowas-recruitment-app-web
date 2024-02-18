@@ -209,15 +209,15 @@ export class ApplicantServiceProxy {
     }
 
     /**
-     * @param id (optional) 
+     * @param userId (optional) 
      * @return Success
      */
-    getApplicantUserId(id: number | undefined): Observable<ApplicantDto> {
+    getApplicantUserId(userId: number | undefined): Observable<ApplicantDto> {
         let url_ = this.baseUrl + "/api/services/app/Applicant/GetApplicantUserId?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        if (userId === null)
+            throw new Error("The parameter 'userId' cannot be null.");
+        else if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent("" + userId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -5051,6 +5051,75 @@ export class LanguageServiceProxy {
 }
 
 @Injectable()
+export class MailServiceServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    sendMail(body: MailData | undefined): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/services/app/MailService/SendMail";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processSendMail(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processSendMail(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<boolean>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<boolean>;
+        }));
+    }
+
+    protected processSendMail(response: HttpResponseBase): Observable<boolean> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+                result200 = resultData200 !== undefined ? resultData200 : <any>null;
+    
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+}
+
+@Injectable()
 export class ProjectServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -8112,10 +8181,12 @@ export class ValueTypeDataServiceProxy {
 export class ApplicantDto implements IApplicantDto {
     id: number;
     applicantNumber: string | undefined;
+    headline: string | undefined;
+    yearsOfExperience: number;
     aboutMe: string | undefined;
     firstName: string | undefined;
     lastName: string | undefined;
-    middle: string | undefined;
+    middleName: string | undefined;
     dateOfBirth: moment.Moment | undefined;
     gender: string | undefined;
     age: number | undefined;
@@ -8128,7 +8199,10 @@ export class ApplicantDto implements IApplicantDto {
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    hasEcowasHistory: boolean | undefined;
+    isEcowas: boolean | undefined;
+    isEcowasVerified: boolean | undefined;
+    availability: string | undefined;
+    passportUrl: string | undefined;
 
     constructor(data?: IApplicantDto) {
         if (data) {
@@ -8143,10 +8217,12 @@ export class ApplicantDto implements IApplicantDto {
         if (_data) {
             this.id = _data["id"];
             this.applicantNumber = _data["applicantNumber"];
+            this.headline = _data["headline"];
+            this.yearsOfExperience = _data["yearsOfExperience"];
             this.aboutMe = _data["aboutMe"];
             this.firstName = _data["firstName"];
             this.lastName = _data["lastName"];
-            this.middle = _data["middle"];
+            this.middleName = _data["middleName"];
             this.dateOfBirth = _data["dateOfBirth"] ? moment(_data["dateOfBirth"].toString()) : <any>undefined;
             this.gender = _data["gender"];
             this.age = _data["age"];
@@ -8159,7 +8235,10 @@ export class ApplicantDto implements IApplicantDto {
             this.country = _data["country"];
             this.state = _data["state"];
             this.userId = _data["userId"];
-            this.hasEcowasHistory = _data["hasEcowasHistory"];
+            this.isEcowas = _data["isEcowas"];
+            this.isEcowasVerified = _data["isEcowasVerified"];
+            this.availability = _data["availability"];
+            this.passportUrl = _data["passportUrl"];
         }
     }
 
@@ -8174,10 +8253,12 @@ export class ApplicantDto implements IApplicantDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["applicantNumber"] = this.applicantNumber;
+        data["headline"] = this.headline;
+        data["yearsOfExperience"] = this.yearsOfExperience;
         data["aboutMe"] = this.aboutMe;
         data["firstName"] = this.firstName;
         data["lastName"] = this.lastName;
-        data["middle"] = this.middle;
+        data["middleName"] = this.middleName;
         data["dateOfBirth"] = this.dateOfBirth ? this.dateOfBirth.toISOString() : <any>undefined;
         data["gender"] = this.gender;
         data["age"] = this.age;
@@ -8190,7 +8271,10 @@ export class ApplicantDto implements IApplicantDto {
         data["country"] = this.country;
         data["state"] = this.state;
         data["userId"] = this.userId;
-        data["hasEcowasHistory"] = this.hasEcowasHistory;
+        data["isEcowas"] = this.isEcowas;
+        data["isEcowasVerified"] = this.isEcowasVerified;
+        data["availability"] = this.availability;
+        data["passportUrl"] = this.passportUrl;
         return data;
     }
 
@@ -8205,10 +8289,12 @@ export class ApplicantDto implements IApplicantDto {
 export interface IApplicantDto {
     id: number;
     applicantNumber: string | undefined;
+    headline: string | undefined;
+    yearsOfExperience: number;
     aboutMe: string | undefined;
     firstName: string | undefined;
     lastName: string | undefined;
-    middle: string | undefined;
+    middleName: string | undefined;
     dateOfBirth: moment.Moment | undefined;
     gender: string | undefined;
     age: number | undefined;
@@ -8221,7 +8307,10 @@ export interface IApplicantDto {
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    hasEcowasHistory: boolean | undefined;
+    isEcowas: boolean | undefined;
+    isEcowasVerified: boolean | undefined;
+    availability: string | undefined;
+    passportUrl: string | undefined;
 }
 
 export class ApplicantDtoPagedResultDto implements IApplicantDtoPagedResultDto {
@@ -9172,13 +9261,16 @@ export interface ICoverLetterDtoPagedResultDto {
 }
 
 export class CreateApplicantDto implements ICreateApplicantDto {
+    applicantNumber: string | undefined;
+    headline: string | undefined;
+    yearsOfExperience: number;
     aboutMe: string | undefined;
     firstName: string | undefined;
     lastName: string | undefined;
-    middle: string | undefined;
-    dateOfBirth: moment.Moment;
+    middleName: string | undefined;
+    dateOfBirth: moment.Moment | undefined;
     gender: string | undefined;
-    age: number;
+    age: number | undefined;
     phone: string | undefined;
     alternatePhone: string | undefined;
     address: string | undefined;
@@ -9188,7 +9280,10 @@ export class CreateApplicantDto implements ICreateApplicantDto {
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    hasEcowasHistory: boolean;
+    isEcowas: boolean | undefined;
+    isEcowasVerified: boolean | undefined;
+    availability: string | undefined;
+    passportUrl: string | undefined;
 
     constructor(data?: ICreateApplicantDto) {
         if (data) {
@@ -9201,10 +9296,13 @@ export class CreateApplicantDto implements ICreateApplicantDto {
 
     init(_data?: any) {
         if (_data) {
+            this.applicantNumber = _data["applicantNumber"];
+            this.headline = _data["headline"];
+            this.yearsOfExperience = _data["yearsOfExperience"];
             this.aboutMe = _data["aboutMe"];
             this.firstName = _data["firstName"];
             this.lastName = _data["lastName"];
-            this.middle = _data["middle"];
+            this.middleName = _data["middleName"];
             this.dateOfBirth = _data["dateOfBirth"] ? moment(_data["dateOfBirth"].toString()) : <any>undefined;
             this.gender = _data["gender"];
             this.age = _data["age"];
@@ -9217,7 +9315,10 @@ export class CreateApplicantDto implements ICreateApplicantDto {
             this.country = _data["country"];
             this.state = _data["state"];
             this.userId = _data["userId"];
-            this.hasEcowasHistory = _data["hasEcowasHistory"];
+            this.isEcowas = _data["isEcowas"];
+            this.isEcowasVerified = _data["isEcowasVerified"];
+            this.availability = _data["availability"];
+            this.passportUrl = _data["passportUrl"];
         }
     }
 
@@ -9230,10 +9331,13 @@ export class CreateApplicantDto implements ICreateApplicantDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["applicantNumber"] = this.applicantNumber;
+        data["headline"] = this.headline;
+        data["yearsOfExperience"] = this.yearsOfExperience;
         data["aboutMe"] = this.aboutMe;
         data["firstName"] = this.firstName;
         data["lastName"] = this.lastName;
-        data["middle"] = this.middle;
+        data["middleName"] = this.middleName;
         data["dateOfBirth"] = this.dateOfBirth ? this.dateOfBirth.toISOString() : <any>undefined;
         data["gender"] = this.gender;
         data["age"] = this.age;
@@ -9246,7 +9350,10 @@ export class CreateApplicantDto implements ICreateApplicantDto {
         data["country"] = this.country;
         data["state"] = this.state;
         data["userId"] = this.userId;
-        data["hasEcowasHistory"] = this.hasEcowasHistory;
+        data["isEcowas"] = this.isEcowas;
+        data["isEcowasVerified"] = this.isEcowasVerified;
+        data["availability"] = this.availability;
+        data["passportUrl"] = this.passportUrl;
         return data;
     }
 
@@ -9259,13 +9366,16 @@ export class CreateApplicantDto implements ICreateApplicantDto {
 }
 
 export interface ICreateApplicantDto {
+    applicantNumber: string | undefined;
+    headline: string | undefined;
+    yearsOfExperience: number;
     aboutMe: string | undefined;
     firstName: string | undefined;
     lastName: string | undefined;
-    middle: string | undefined;
-    dateOfBirth: moment.Moment;
+    middleName: string | undefined;
+    dateOfBirth: moment.Moment | undefined;
     gender: string | undefined;
-    age: number;
+    age: number | undefined;
     phone: string | undefined;
     alternatePhone: string | undefined;
     address: string | undefined;
@@ -9275,7 +9385,10 @@ export interface ICreateApplicantDto {
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    hasEcowasHistory: boolean;
+    isEcowas: boolean | undefined;
+    isEcowasVerified: boolean | undefined;
+    availability: string | undefined;
+    passportUrl: string | undefined;
 }
 
 export class CreateApplicationDto implements ICreateApplicationDto {
@@ -11958,6 +12071,61 @@ export class LanguageDtoPagedResultDto implements ILanguageDtoPagedResultDto {
 export interface ILanguageDtoPagedResultDto {
     items: LanguageDto[] | undefined;
     totalCount: number;
+}
+
+export class MailData implements IMailData {
+    emailToId: string | undefined;
+    emailToName: string | undefined;
+    emailSubject: string | undefined;
+    emailBody: string | undefined;
+
+    constructor(data?: IMailData) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.emailToId = _data["emailToId"];
+            this.emailToName = _data["emailToName"];
+            this.emailSubject = _data["emailSubject"];
+            this.emailBody = _data["emailBody"];
+        }
+    }
+
+    static fromJS(data: any): MailData {
+        data = typeof data === 'object' ? data : {};
+        let result = new MailData();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["emailToId"] = this.emailToId;
+        data["emailToName"] = this.emailToName;
+        data["emailSubject"] = this.emailSubject;
+        data["emailBody"] = this.emailBody;
+        return data;
+    }
+
+    clone(): MailData {
+        const json = this.toJSON();
+        let result = new MailData();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IMailData {
+    emailToId: string | undefined;
+    emailToName: string | undefined;
+    emailSubject: string | undefined;
+    emailBody: string | undefined;
 }
 
 export class PermissionDto implements IPermissionDto {

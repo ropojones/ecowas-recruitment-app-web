@@ -142,10 +142,10 @@
     ora "5.4.1"
     rxjs "7.8.1"
 
-"@angular/animations@^16.0.0", "@angular/animations@^17.0.4", "@angular/animations@17.0.4":
-  version "17.0.4"
-  resolved "https://registry.npmjs.org/@angular/animations/-/animations-17.0.4.tgz"
-  integrity sha512-XHkTBZAoYf1t4Hb06RkYa6cgtjEA5JGq1ArXu/DckOS6G/ZuY+dwWULEmaf9ejJem8O78ol223ZQ5d7sXqpixQ==
+"@angular/animations@^16.0.0", "@angular/animations@^17.2.1", "@angular/animations@17.0.4":
+  version "17.2.1"
+  resolved "https://registry.npmjs.org/@angular/animations/-/animations-17.2.1.tgz"
+  integrity sha512-JCccG8EPM04OtN+Wayi79QnbkCYpKY69okWjEM7cPq8fbjIQE/ZAWxnzYMR/Xq3prwUtlH7LMyB5YdYCc6Ea1A==
   dependencies:
     tslib "^2.3.0"
 
@@ -201,7 +201,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^16.0.0", "@angular/core@^17.0.3", "@angular/core@^17.0.4", "@angular/core@>=13.0.0", "@angular/core@17.0.4", "@angular/core@17.0.8":
+"@angular/core@^16.0.0", "@angular/core@^17.0.3", "@angular/core@^17.0.4", "@angular/core@>=13.0.0", "@angular/core@17.0.4", "@angular/core@17.0.8", "@angular/core@17.2.1":
   version "17.0.4"
   resolved "https://registry.npmjs.org/@angular/core/-/core-17.0.4.tgz"
   integrity sha512-zk+z5sYPZd87pLxECx27quB5FvSmoi9PjJlcSlaBwwqaGnh/tPJI14u3q1dRY/CoZgP9egEiwc428+DzvOzJew==

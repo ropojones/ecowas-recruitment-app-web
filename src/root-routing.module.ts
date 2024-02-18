@@ -1,27 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'; 
+import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '@app/app.component';
 import { AccountComponent } from 'account/account.component';
+import { EcorecruitComponent } from 'ecorecruit/ecorecruit.component';
 
 const routes: Routes = [
-    { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule) },
-    { path: '', redirectTo: '/ecorecruit', pathMatch: 'full' },
-    {
-        path: 'account',
-        loadChildren: () => import('account/account.module').then(m => m.AccountModule), // Lazy load account module
-        data: { preload: true }
-    },
 
-    {
-        path: 'app',
-        loadChildren: () => import('app/app.module').then(m => m.AppModule), // Lazy load account module
-        data: { preload: true }
-    },
+    { path: '', component: EcorecruitComponent },
+    { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule) },
+    { path: 'account', loadChildren: () => import('account/account.module').then(m => m.AccountModule), data: { preload: true } },
+    { path: 'admin', loadChildren: () => import('app/app.module').then(m => m.AppModule), data: { preload: true } },
     { path: 'applicants', loadChildren: () => import('./applicants/applicants.module').then(m => m.ApplicantsModule) },
     { path: 'ecorecruit', loadChildren: () => import('./ecorecruit/ecorecruit.module').then(m => m.EcorecruitModule) },
-
-
-   
 ];
 
 @NgModule({
