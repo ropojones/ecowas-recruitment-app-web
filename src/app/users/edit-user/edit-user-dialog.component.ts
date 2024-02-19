@@ -32,8 +32,7 @@ export class EditUserDialogComponent extends AppComponentBase
     public _userService: UserServiceProxy,
     public bsModalRef: BsModalRef
   ) {
-    super(injector);
-  }
+    super(injector);  }
 
   ngOnInit(): void {
     this._userService.get(this.id).subscribe((result) => {

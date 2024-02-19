@@ -12,6 +12,7 @@ import { HowToApplyComponent } from './how-to-apply/how-to-apply.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { VacanciesComponent } from './vacancies/vacancies.component';
 import { ApplicationsComponent } from './applications/applications.component';
+import { CreateProfileComponent } from './profile/create-profile/create-profile.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'profile/detail-profile', component: DetailProfileComponent, data: { pageTitle: 'Applicant Details' } },
       { path: 'profile/headline-profile', component: HeadlineProfileComponent, data: { pageTitle: 'Applicant Headline' } },
       { path: 'profile/score-profile', component: ScoreProfileComponent, data: { pageTitle: 'Online CV Score' } },
+      { path: 'profile/create-profile', component: CreateProfileComponent, data: { pageTitle: 'Create Profile' } },
       { path: 'profile/update-profile', component: UpdateProfileComponent, data: { pageTitle: 'Update Profile' } } ,
       { path: 'how-to-apply', component: HowToApplyComponent, data: { pageTitle: 'How to apply' } } ,
       { path: 'contact-us', component: ContactUsComponent, data: { pageTitle: 'Contact Us' } }, 
@@ -36,4 +38,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ApplicantsRoutingModule { }
-export const routingComponents = [ApplicantsComponent, ProfileComponent, DetailProfileComponent, HeadlineProfileComponent, ScoreProfileComponent, UpdateProfileComponent, HowToApplyComponent, ContactUsComponent]
+export const routingComponents = [ApplicantsComponent, ProfileComponent, DetailProfileComponent, HeadlineProfileComponent, ScoreProfileComponent, 
+                                  CreateProfileComponent, UpdateProfileComponent, HowToApplyComponent, ContactUsComponent]

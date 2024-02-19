@@ -1,12 +1,8 @@
-import { Component, Injector, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { finalize } from 'rxjs/operators';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
-import { ApplicantServiceProxy, ApplicantDto, ApplicantDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
+import { PagedRequestDto } from 'shared/paged-listing-component-base';
+import { ApplicantServiceProxy, ApplicantDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
-import { CreateProfileComponent } from './create-profile/create-profile.component';
 
 
 class PagedApplicantsRequestDto extends PagedRequestDto {
@@ -22,7 +18,31 @@ class PagedApplicantsRequestDto extends PagedRequestDto {
   animations: [appModuleAnimation()],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfileComponent{
+
+export class ProfileComponent extends AppComponentBase{
+
+  userId = this.appSession.userId;
+  public applicant = new ApplicantDto();
+
+  constructor(injector: Injector,
+              private _applicantService: ApplicantServiceProxy) 
+  {
+    super(injector)
+  }
+
+  ngOnInit() {
+    this.getApplicant(this.userId)
+  }
+
+  getApplicant(userid: number): void {
+    this._applicantService.getApplicantUserId(userid)
+      .subscribe((result) => {
+        if (result != null) {
+          this.applicant = result;
+          }
+      });
+  }
+
 
 
 }

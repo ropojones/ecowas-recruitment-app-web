@@ -5,7 +5,7 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { finalize } from 'rxjs/operators';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
-import { ApplicantServiceProxy, ApplicantDto, ApplicantDtoPagedResultDto } from '@shared/service-proxies/service-proxies'; 
+import { ApplicantServiceProxy, ApplicantDto, ApplicantDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
 import { CreateProfileComponent } from '../create-profile/create-profile.component';
 import { UpdateProfileComponent } from '../update-profile/update-profile.component';
 
@@ -15,7 +15,10 @@ import { UpdateProfileComponent } from '../update-profile/update-profile.compone
   styleUrl: './detail-profile.component.css'
 })
 export class DetailProfileComponent extends AppComponentBase {
-
+  id: number;
+  applicant: ApplicantDto = new ApplicantDto();
+  applicantService: ApplicantServiceProxy;
+  userId = this.appSession.userId;
   constructor(
     injector: Injector,
     private _applicantService: ApplicantServiceProxy,
@@ -23,7 +26,14 @@ export class DetailProfileComponent extends AppComponentBase {
   ) {
     super(injector);
   }
-  
+
+
+  ngOnInit(): void {
+    this._applicantService.getApplicantUserId(this.userId).subscribe((result) => {
+      this.applicant = result;     
+    });
+  }
+
   createApplicant(): void {
     this.showCreateOrEditApplicantDialog();
   }
@@ -31,7 +41,6 @@ export class DetailProfileComponent extends AppComponentBase {
   editApplicant(applicant: ApplicantDto): void {
     this.showCreateOrEditApplicantDialog(applicant.id);
   }
-
 
   protected delete(applicant: ApplicantDto): void {
     abp.message.confirm(
@@ -47,21 +56,21 @@ export class DetailProfileComponent extends AppComponentBase {
       }
     );
   }
-  
+
   private showCreateOrEditApplicantDialog(id?: number): void {
     let createOrEditApplicantDialog: BsModalRef;
     if (!id) {
       createOrEditApplicantDialog = this._modalService.show(
         CreateProfileComponent,
         {
-          class: 'modal-lg',
+          class: 'modal-xl',
         }
       );
     } else {
       createOrEditApplicantDialog = this._modalService.show(
         UpdateProfileComponent,
         {
-          class: 'modal-lg',
+          class: 'modal-xl ',
           initialState: {
             id: id,
           },

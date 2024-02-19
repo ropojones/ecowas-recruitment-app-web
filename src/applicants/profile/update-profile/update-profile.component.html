@@ -1,1 +1,23 @@
-<p>update-profile works!</p>
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editApplicantModal="ngForm"
+  (ngSubmit)="save()"
+>
+
+<abp-modal-header
+    [title]="'UpdateProfile' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+<div class="modal-body">
+
+
+
+</div>
+
+<abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editApplicantModal.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

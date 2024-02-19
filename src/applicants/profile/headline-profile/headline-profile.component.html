@@ -13,24 +13,25 @@
             <img class="profile-image mb-4 border border-white border-3" src="../../../assets/img/user.png"
                 height="150" />
 
-            <h3>{{ applicant.firstName.toString() + " " + applicant.lastName.toString()}}</h3>
-
-            <h5 *ngIf="applicant.headline else headlineBlock">{{ applicant.headline }}</h5><br>
+            <h3 *ngIf="applicant else nameBlock">{{ applicant.firstName.toString() + " " + applicant.lastName.toString() }}</h3>
+            <ng-template #nameBlock>
+                <h5> {{"FullName" | localize}}: {{"NotSpecified" | localize}}</h5>
+            </ng-template>
+            <h5 *ngIf="applicant.headline != '' else headlineBlock"> {{ applicant.headline }}</h5><br>
             <ng-template #headlineBlock>
                 <h5> {{"Headline" | localize}}: {{"NotSpecified" | localize}}</h5>
             </ng-template>
-            <h6 *ngIf="applicant.dateOfBirth else experienceBlock"> {{"Experience" | localize}}: {{
+            <h6 *ngIf="applicant.yearsOfExperience > 0 else experienceBlock"> {{"Experience" | localize}}: {{
                 applicant.yearsOfExperience}} {{"Years" | localize}}</h6>
             <ng-template #experienceBlock>
                 <h6> {{"Experience" | localize}}: {{"NotSpecified" | localize}}</h6>
             </ng-template>
-            <h6 *ngIf="applicant.dateOfBirth else dobBlock"> {{"DateofBirth" | localize}}:
-                {{applicant.dateOfBirth.toDate()| date }}</h6>
+            <h6 *ngIf="applicant.dateOfBirth != null else dobBlock"> {{"DateofBirth" | localize}}: {{applicant.dateOfBirth.toDate()| date }}</h6>
             <ng-template #dobBlock>
                 <h6> {{"DateofBirth" | localize}}: {{"NotSpecified" | localize}}</h6>
             </ng-template>
 
-            <h6 *ngIf="applicant.country else countryBlock"> {{"Country" | localize}}: {{ applicant.country }}</h6>
+            <h6 *ngIf="applicant.country != '' else countryBlock"> {{"Country" | localize}}: {{ applicant.country }}</h6>
             <ng-template #countryBlock>
                 <h6> {{"Country" | localize}}: {{"NotSpecified" | localize}}</h6>
             </ng-template>
