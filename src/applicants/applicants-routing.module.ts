@@ -38,5 +38,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ApplicantsRoutingModule { }
-export const routingComponents = [ApplicantsComponent, ProfileComponent, DetailProfileComponent, HeadlineProfileComponent, ScoreProfileComponent, 
-                                  CreateProfileComponent, UpdateProfileComponent, HowToApplyComponent, ContactUsComponent]
+export const routingComponents = []

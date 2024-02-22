@@ -10,10 +10,11 @@
             </div> -->
         <div class="card-body bg-success p-5 text-center lh-base">
 
-            <img class="profile-image mb-4 border border-white border-3" src="../../../assets/img/user.png"
+            <!-- <img class="profile-image mb-4 border border-white border-3" src="../../../assets/img/user.png"
                 height="150" />
 
-            <h3 *ngIf="applicant else nameBlock">{{ applicant.firstName.toString() + " " + applicant.lastName.toString() }}</h3>
+            <h3 *ngIf="applicant else nameBlock"> {{ applicant.firstName }} {{ applicant.middleName }} {{
+                applicant.lastName }}</h3>
             <ng-template #nameBlock>
                 <h5> {{"FullName" | localize}}: {{"NotSpecified" | localize}}</h5>
             </ng-template>
@@ -26,15 +27,17 @@
             <ng-template #experienceBlock>
                 <h6> {{"Experience" | localize}}: {{"NotSpecified" | localize}}</h6>
             </ng-template>
-            <h6 *ngIf="applicant.dateOfBirth != null else dobBlock"> {{"DateofBirth" | localize}}: {{applicant.dateOfBirth.toDate()| date }}</h6>
+            <h6 *ngIf="applicant.dateOfBirth != null else dobBlock"> {{"DateofBirth" | localize}}:
+                {{applicant.dateOfBirth }}</h6>
             <ng-template #dobBlock>
                 <h6> {{"DateofBirth" | localize}}: {{"NotSpecified" | localize}}</h6>
             </ng-template>
 
-            <h6 *ngIf="applicant.country != '' else countryBlock"> {{"Country" | localize}}: {{ applicant.country }}</h6>
+            <h6 *ngIf="applicant.country != '' else countryBlock"> {{"Country" | localize}}: {{ applicant.country }}
+            </h6>
             <ng-template #countryBlock>
                 <h6> {{"Country" | localize}}: {{"NotSpecified" | localize}}</h6>
-            </ng-template>
+            </ng-template> -->
 
         </div>
         <!-- <div class="card-footer  bg-success p-2">

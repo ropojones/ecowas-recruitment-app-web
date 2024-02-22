@@ -3,3 +3,6 @@ body{
     /* font-family: 'Poppins', sans-serif !important; */
     
 }
+.modal-content{
+  border-radius: 0px !important;
+}

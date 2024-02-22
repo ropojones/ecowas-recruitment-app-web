@@ -11,34 +11,34 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav ms-auto me-0 my-2 my-lg-0 p-3 navbar-nav-scroll"
+                <ul class="navbar-nav ms-auto me-0 my-2 my-lg-0 p-3 navbar-nav-scroll fw-semibold"
                     style="--bs-scroll-height: 250px;">
                     <li class="nav-item me-2">
-                        <a class="nav-link fs-6"  [routerLink]="('/applicants/how-to-apply')" role="button">
+                        <a class="nav-link fs-6" [routerLink]="('/applicants/how-to-apply')" role="button">
                             {{"HowToApply"|localize}}
                         </a>
 
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link fs-6"  [routerLink]="('/applicants/vacancies')"  role="button">
+                        <a class="nav-link fs-6" [routerLink]="('/applicants/vacancies')" role="button">
                             {{"CurrentJobs"|localize}}
                         </a>
 
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link fs-6"   [routerLink]="('/applicants/applications')" >
+                        <a class="nav-link fs-6" [routerLink]="('/applicants/applications')">
                             {{"MyApplication"|localize}}
                         </a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link fs-6"  [routerLink]="('/applicants/profile')"  routerLink="">
+                        <a class="nav-link fs-6" [routerLink]="('/applicants/profile')" routerLink="">
                             {{"CurriculumVitae"|localize}}
                         </a>
                     </li>
 
 
                 </ul>
-                <div class="d-flex bg-success" role="search">
+                <div class="d-flex bg-success p-3 " style="height: 50px;" role="search">
 
                 </div>
             </div>
@@ -82,7 +82,7 @@
                         <div class="login-panel">
                             <h4 class="p-3 text-bold">ECOWAS Careers</h4>
                             <div class="login-panel-buttons">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -96,17 +96,41 @@
 </div>
 
 
-<footer class="fixed-FF">
-    <div class=" row h-25 bg-success align-items-center d-flex justify-content-center text-center">
+<footer class="bg-success p-5">
+    <div class="row g-5 p-5">
+        <div class="col">
+            <div class="col-md-12 text-left copyright-text">
+                <p class="mb-2">
+                    {{"Copyright" | localize }} &copy; {{ currentYear }}. {{ "AllRights" | localize }} <br />
+                    {{
+                    "ECORecruit" | localize
+                    }}
+                </p>
+    
+            </div>
+            <p class="mb-2 fs-4 fw-bold"><i class="fa fa-map-marker" aria-hidden="true"></i>   {{"Address" | localize}} </p>
+            101, Yakubu Gowon Crescent, Asokoro District P.M.B 401, Abuja, Nigeria
 
-        <div class="col-md-12 text-center copyright-text">
-            <p class="mb-2">
-                {{"Copyright" | localize }} &copy; {{ currentYear }}. {{ "AllRights" | localize }} <br />
-                {{
-                "ECORecruit" | localize
-                }}
-            </p>
+        </div>
+        <div class="col border-start">
+            <p class="mb-2 fs-4 fw-bold"><i class="fa fa-mobile me-2"></i>   {{"ContactEcoRecruit" | localize}} </p>
+            <p class="mb-3 fs-6"> {{"ContactEcoRecruitText" | localize}}</p>
+            <p class="mb-3 fs-6"> +234 803 111222333</p>
+            <p class="mb-3 fs-6"> +234 803 444555666</p>
+            <p class="mb-3 fs-6"> +234 803 777888999</p>
+        </div>
+        <div class="col">
+            <p class="fw-bold fs-5 mb-0">{{"JoinUs" | localize}}   </p>
+            <p class="mb-4 fs-6 border-bottom border-secondary-subtle border-opacity-10 pb-2">{{"JoinUsText" | localize}}   </p>
+        
+            <p class="fw-bold fs-5 mb-0">  {{"Consultancies" | localize}}    </p>
+            <p class="mb-4 fs-6 border-bottom border-secondary-subtleborder-opacity-10 pb-2">{{"ConsultanciesText" | localize}}   </p>
 
+            <p class="fw-bold fs-5 mb-0"> {{"Internships" | localize}}    </p>
+            <p class="mb-4 fs-6 border-bottom border-secondary-subtle border-opacity-10 pb-2">  {{"InternshipsText" | localize}}   </p>
+        
+            <p class="fw-bold fs-5 mb-0">{{"VolunteerOpportunities" | localize}}   </p>
+            <p class="mb-4 fs-6 border-bottom border-secondary-subtle border-opacity-10 pb-2">  {{"VolunteerOpportunitiesText" | localize}}   </p>
         </div>
     </div>
 </footer>

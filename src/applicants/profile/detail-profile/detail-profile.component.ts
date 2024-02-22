@@ -1,28 +1,36 @@
 
-import { Component, Injector, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
-import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { finalize } from 'rxjs/operators';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base';
-import { ApplicantServiceProxy, ApplicantDto, ApplicantDtoPagedResultDto } from '@shared/service-proxies/service-proxies';
-import { CreateProfileComponent } from '../create-profile/create-profile.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ApplicantServiceProxy, ApplicantDto } from '@shared/service-proxies/service-proxies';
 import { UpdateProfileComponent } from '../update-profile/update-profile.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
+import {
+  MatDialog,
+} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SharedModule } from "../../../shared/shared.module";
 
 @Component({
-  selector: 'app-detail-profile',
-  templateUrl: './detail-profile.component.html',
-  styleUrl: './detail-profile.component.css'
+    standalone: true,
+    selector: 'app-detail-profile',
+    templateUrl: './detail-profile.component.html',
+    styleUrl: './detail-profile.component.css',
+    imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatCard, MatCardActions, MatCardContent, MatCardTitle, MatCardHeader, MatCardSubtitle, SharedModule]
 })
 export class DetailProfileComponent extends AppComponentBase {
   id: number;
-  applicant: ApplicantDto = new ApplicantDto();
+  applicant: ApplicantDto;
   applicantService: ApplicantServiceProxy;
   userId = this.appSession.userId;
   constructor(
     injector: Injector,
     private _applicantService: ApplicantServiceProxy,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
+    public dialog: MatDialog
   ) {
     super(injector);
   }
@@ -30,56 +38,21 @@ export class DetailProfileComponent extends AppComponentBase {
 
   ngOnInit(): void {
     this._applicantService.getApplicantUserId(this.userId).subscribe((result) => {
-      this.applicant = result;     
+      this.applicant = result;
     });
   }
 
-  createApplicant(): void {
-    this.showCreateOrEditApplicantDialog();
-  }
+  updateProfile(): void {
+    const dialogRef = this.dialog.open(UpdateProfileComponent, {
+      data: this.applicant,
+      height: '50%',
+      width: '50%',
+    });
 
-  editApplicant(applicant: ApplicantDto): void {
-    this.showCreateOrEditApplicantDialog(applicant.id);
-  }
-
-  protected delete(applicant: ApplicantDto): void {
-    abp.message.confirm(
-      this.l('ApplicantDeleteWarningMessage', applicant.firstName.toString() + " " + applicant.lastName.toString()),
-      undefined,
-      (result: boolean) => {
-        if (result) {
-          this._applicantService.delete(applicant.id).subscribe(() => {
-            abp.notify.success(this.l('SuccessfullyDeleted'));
-            //this.refresh();
-          });
-        }
-      }
-    );
-  }
-
-  private showCreateOrEditApplicantDialog(id?: number): void {
-    let createOrEditApplicantDialog: BsModalRef;
-    if (!id) {
-      createOrEditApplicantDialog = this._modalService.show(
-        CreateProfileComponent,
-        {
-          class: 'modal-xl',
-        }
-      );
-    } else {
-      createOrEditApplicantDialog = this._modalService.show(
-        UpdateProfileComponent,
-        {
-          class: 'modal-xl ',
-          initialState: {
-            id: id,
-          },
-        }
-      );
-    }
-
-    createOrEditApplicantDialog.content.onSave.subscribe(() => {
-      //this.refresh();
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+      // this.animal = result;
     });
   }
+
 }

@@ -27,7 +27,8 @@ import { VacanciesComponent } from './vacancies/vacancies.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { CreateProfileComponent } from './profile/create-profile/create-profile.component';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MaterialModule } from '../material/material.module';
 
 // layout
 
@@ -52,7 +53,7 @@ import { CreateProfileComponent } from './profile/create-profile/create-profile.
     VacanciesComponent,
     ApplicationsComponent,
     FaqsComponent,
-    CreateProfileComponent,
+    CreateProfileComponent
 
   ],
   imports: [CommonModule, 
@@ -70,7 +71,9 @@ import { CreateProfileComponent } from './profile/create-profile/create-profile.
     NgxPaginationModule,
     RouterOutlet,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    MatSlideToggleModule,
+    MaterialModule
     
   ]
 })
