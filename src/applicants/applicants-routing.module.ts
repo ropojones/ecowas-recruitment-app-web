@@ -29,6 +29,7 @@ const routes: Routes = [
       { path: 'contact-us', component: ContactUsComponent, data: { pageTitle: 'Contact Us' } }, 
       { path: 'vacancies', component: VacanciesComponent, data: { pageTitle: 'Contact Us' } } ,
       { path: 'applications', component: ApplicationsComponent, data: { pageTitle: 'My Applications' } } ,
+      { path: '**', component: PageNotFoundComponent, data: { pageTitle: 'My Applications' } } ,
     ]
     
   }];

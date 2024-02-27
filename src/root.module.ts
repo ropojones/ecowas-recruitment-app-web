@@ -18,6 +18,8 @@ import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 
 import { RootComponent } from './root.component';
 import { AppInitializer } from './app-initializer'; 
+import { MaterialModule } from 'material/material.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
     return abp.localization.currentLanguage.name;
@@ -39,6 +41,7 @@ export function getCurrentLanguage(): string {
     TabsModule.forRoot(),
     ServiceProxyModule,
     RootRoutingModule, 
+    MaterialModule
   ],
   declarations: [RootComponent],
   providers: [
@@ -54,6 +57,7 @@ export function getCurrentLanguage(): string {
       provide: LOCALE_ID,
       useFactory: getCurrentLanguage,
     },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ],
   bootstrap: [RootComponent],
 })

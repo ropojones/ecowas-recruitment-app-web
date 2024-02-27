@@ -29,6 +29,7 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { CreateProfileComponent } from './profile/create-profile/create-profile.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MaterialModule } from '../material/material.module';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 
 // layout
 
@@ -53,10 +54,12 @@ import { MaterialModule } from '../material/material.module';
     VacanciesComponent,
     ApplicationsComponent,
     FaqsComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    UpdateProfileComponent
 
   ],
-  imports: [CommonModule, 
+  imports: [
+    CommonModule, 
     ApplicantsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -72,7 +75,6 @@ import { MaterialModule } from '../material/material.module';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    MatSlideToggleModule,
     MaterialModule
     
   ]

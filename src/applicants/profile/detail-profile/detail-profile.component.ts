@@ -42,16 +42,17 @@ export class DetailProfileComponent extends AppComponentBase {
     });
   }
 
-  updateProfile(): void {
-    const dialogRef = this.dialog.open(UpdateProfileComponent, {
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(UpdateProfileComponent,  {
       data: this.applicant,
-      height: '50%',
-      width: '50%',
+      height: '70%',
+      width: '60%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
-      // this.animal = result;
+      console.log('The dialog was closed');
+      
     });
   }
 

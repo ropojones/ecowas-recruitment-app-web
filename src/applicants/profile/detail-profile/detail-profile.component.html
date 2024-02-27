@@ -7,7 +7,7 @@
             {{"EmploymentAvailabilityText" | localize}}
         </div>
         <div class="card-footer  text-right text-uppercase  text-success p-3 bg-white">
-            <a href="javascript:;" (click)="upateApplicant()" class="link-success link-opacity-0-hover link-underline-opacity-0 link-underline-opacity-0-hover"> <span
+            <a href="javascript:;" class="link-success link-opacity-0-hover link-underline-opacity-0 link-underline-opacity-0-hover" onclick="openDialog()"> <span
                     class="text-success fw-semibold"> {{"Update" | localize}}</span></a>
         </div>
     </div>
@@ -20,6 +20,7 @@
         <div class="card-footer  text-bg-light bg-white py-4">
         </div>
     </div>
+    <button mat-raised-button>Testing Me</button>
 
     <div class="card rounded-0">
         <div class="card-header border border-0 text-bg-light bg-white  p-3">
@@ -97,14 +98,13 @@
 </section> -->
 <mat-card class="rounded-0">
     <mat-card-header>
-        <mat-card-title class="p-2"> {{"EmploymentAvailability" | localize}}</mat-card-title>
-        <mat-card-subtitle class="p-2">{{"EmploymentAvailabilityText" | localize}}</mat-card-subtitle>
+        <mat-card-title class="text-secondary fs-5 fw-semibold"> {{"EmploymentAvailability" | localize}}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-
+    <mat-card-content class="p-3 mb-2">
+        {{"EmploymentAvailabilityText" | localize}}
     </mat-card-content>
-    <mat-card-actions class="border-top p-2" align="end">
-        <button mat-flat-button class="text-uppercase fw-semibold" (click)="updateProfile()">{{"Update" | localize}} </button>
+    <mat-card-actions align="end" class="p-3 border border-top">
+        <button mat-button class="text-success fw-semibold text-uppercase" (click)="openDialog()">{{"Update" | localize}}</button>
     </mat-card-actions>
 </mat-card>
-<br>
