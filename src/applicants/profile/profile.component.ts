@@ -20,9 +20,8 @@ class PagedApplicantsRequestDto extends PagedRequestDto {
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
   animations: [appModuleAnimation()],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports:[HeadlineProfileComponent, DetailProfileComponent, ScoreProfileComponent]
-
+  changeDetection: ChangeDetectionStrategy.Default,
+  imports:[HeadlineProfileComponent, DetailProfileComponent, ScoreProfileComponent],
 })
 
 export class ProfileComponent extends AppComponentBase{

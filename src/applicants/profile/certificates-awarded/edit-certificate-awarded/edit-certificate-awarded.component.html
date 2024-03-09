@@ -1,0 +1,56 @@
+<h2 mat-dialog-title class="bg-success fw-semibold">{{ "EditCertificateAwarded" | localize }}</h2>
+<mat-dialog-content>
+
+    <p class="py-4 mb-5 border-bottom">{{ "AddCertificateAwardedText" | localize }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-4">
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{ "Title" | localize}}</mat-label>
+                    <input matInput placeholder='{{"TitlePlaceholder"|localize}}' formControlName="title">
+                    <mat-error
+                        *ngIf="form.get('title').invalid && (form.get('title').dirty || form.get('title').touched)">
+                        {{"TitleNameRequired"|localize}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{"Type" | localize}}</mat-label>
+                    <mat-select formControlName="type">
+                        <mat-option>None</mat-option>
+                        <mat-option value="Certificate">{{"Certificate"|localize}}</mat-option>
+                        <mat-option value="Award">{{"Award"|localize}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.get('type').invalid && (form.get('type').dirty || form.get('type').touched)">
+                        {{"TypeRequired"|localize}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{ "YearReceived" | localize}}</mat-label>
+                    <input matInput type="number" placeholder="*YearReceivedPlaceholder" formControlName="yearReceived">
+                    <mat-error
+                        *ngIf="form.get('yearReceived').invalid && (form.get('yearReceived').dirty || form.get('yearReceived').touched)">
+                        {{"YearReceivedRequired"|localize}}
+                    </mat-error>
+
+                </mat-form-field>
+            </div>
+        </div>
+
+        <input type="hidden" name="applicantId" id="applicantId" formControlName="applicantId" />
+
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions class="px-4 py-4 mt-3 justify-content-between">
+    <button mat-button (click)="Cancel()">{{ "Cancel" | localize }}</button>
+    <button mat-raised-button cdkFocusInitial class="bg-success px-5" (click)="onSubmit()">{{ "UpdateCertificateAwarded"|
+        localize }}</button>
+</mat-dialog-actions>

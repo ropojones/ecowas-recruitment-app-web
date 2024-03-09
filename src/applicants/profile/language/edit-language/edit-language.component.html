@@ -1,0 +1,56 @@
+<h2 mat-dialog-title class="bg-success fw-semibold">{{ "EditLanguage" | localize }}</h2>
+<mat-dialog-content>
+
+    <p class="py-4 mb-5 border-bottom">{{ "AddLanguageText" | localize }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-4">
+            <div class="col-6">
+                <mat-form-field class="form-field">
+                    <mat-label>{{ "Language" | localize}}</mat-label>
+                    <mat-select formControlName="language">
+                        <mat-option>None</mat-option>
+                        <mat-option value="English">{{"English"|localize}}</mat-option>
+                        <mat-option value="French">{{"French"|localize}}</mat-option>
+                        <mat-option value="Portuguese">{{"Portuguese"|localize}}</mat-option>
+                        <mat-option value="Spanish">{{"Spanish"|localize}}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="form.get('language').invalid && (form.get('language').dirty || form.get('language').touched)">
+                        {{"LanguageRequired"|localize}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <mat-checkbox matInput name="speakingProficiency" id="speakingProficiency" checked="data.speakingProficiency" 
+                    formControlName="speakingProficiency">{{"Spoken" | localize}}</mat-checkbox>
+            </div>
+            <div class="col">
+                <p> <mat-checkbox name="readingProficiency" id="readingProficiency" checked="data.readingProficiency"
+                        formControlName="readingProficiency">{{"Read" | localize}}</mat-checkbox>
+                </p>
+            </div>
+            <div class="col">
+                <mat-checkbox name="writtingProficiency" id="writtingProficiency" checked="data.writtingProficiency"
+                    formControlName="writtingProficiency">{{"Written" | localize}}</mat-checkbox>
+            </div>
+            <div class="col">
+                <mat-checkbox name="understandingProficiency" id="understandingProficiency" checked="data.understandingProficiency"
+                    formControlName="understandingProficiency">{{"UnderstandingComprehension" |
+                    localize}}</mat-checkbox>
+            </div>
+        </div>
+
+
+        <input type="hidden" name="applicantId" id="applicantId" formControlName="applicantId" />
+
+        {{form.value | json}}
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions class="px-4 py-4 mt-3 justify-content-between">
+    <button mat-button (click)="Cancel()">{{ "Cancel" | localize }}</button>
+    <button mat-raised-button cdkFocusInitial class="bg-success px-5" (click)="onSubmit()">{{ "UpdateLanguage"|
+        localize }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,45 @@
+<h2 mat-dialog-title class="bg-success fw-semibold">{{ "EditSkill" | localize }}</h2>
+<mat-dialog-content>
+
+    <p class="py-4 mb-5 border-bottom">{{ "AddSkillText" | localize }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-4">
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{ "Skill" | localize}}</mat-label>
+                    <input matInput placeholder='{{"SkillPlaceholder"|localize}}' formControlName="skill">
+                    <mat-error
+                        *ngIf="form.get('skill').invalid && (form.get('skill').dirty || form.get('skill').touched)">
+                        {{"SkillRequired"|localize}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{ "DescriptionPlaceholder" | localize}}</mat-label>
+                    <input matInput placeholder='{{"Description"|localize}}' formControlName="description">
+                    <mat-error
+                        *ngIf="form.get('description').invalid && (form.get('description').dirty || form.get('description').touched)">
+                        {{"DescriptionRequired"|localize}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+      
+        <input type="hidden" name="applicantId" id="applicantId" formControlName="applicantId" />
+
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions class="px-4 py-4 mt-3 justify-content-between">
+    <button mat-button (click)="Cancel()">{{ "Cancel" | localize }}</button>
+    <button mat-raised-button cdkFocusInitial class="bg-success px-5" (click)="onSubmit()">{{ "UpdateSkill"|
+        localize }}</button>
+</mat-dialog-actions>

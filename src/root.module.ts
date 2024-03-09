@@ -20,6 +20,7 @@ import { RootComponent } from './root.component';
 import { AppInitializer } from './app-initializer'; 
 import { MaterialModule } from 'material/material.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { EditorModule } from '@tinymce/tinymce-angular';
 export function getCurrentLanguage(): string {
   if (abp.localization.currentLanguage.name) {
     return abp.localization.currentLanguage.name;
@@ -41,7 +42,8 @@ export function getCurrentLanguage(): string {
     TabsModule.forRoot(),
     ServiceProxyModule,
     RootRoutingModule, 
-    MaterialModule
+    MaterialModule,
+    EditorModule
   ],
   declarations: [RootComponent],
   providers: [

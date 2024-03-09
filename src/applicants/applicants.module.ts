@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApplicantsRoutingModule, routingComponents } from './applicants-routing.module';
+import { ApplicantsRoutingModule } from './applicants-routing.module';
 import { ApplicantsComponent } from './applicants.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,19 +27,49 @@ import { VacanciesComponent } from './vacancies/vacancies.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { CreateProfileComponent } from './profile/create-profile/create-profile.component';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MaterialModule } from '../material/material.module';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
-
+import { LanguageComponent } from './profile/language/language.component';
+import { ProjectsComponent } from './profile/projects/projects.component';
+import { CoverLetterComponent } from './profile/cover-letters/cover-letters.component';
+import { EditEducationComponent } from './profile/education/edit-education/edit-education.component'; 
+import { AddEducationComponent } from './profile/education/add-education/add-education.component';
+import { DeleteEducationComponent } from './profile/education/delete-education/delete-education.component';
+// Import ng-circle-progress
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { DeleteWorkExperienceComponent } from './profile/work-experience/delete-workexperience/delete-workexperience.component';
+import { EditWorkExperienceComponent } from './profile/work-experience/edit-workexperience/edit-workexperience.component';
+import { AddWorkExperienceComponent } from './profile/work-experience/add-workexperience/add-workexperience.component';
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { AddCertificateAwardedComponent } from './profile/certificates-awarded/add-certificate-awarded/add-certificate-awarded.component';
+import { EditCertificateAwardedComponent } from './profile/certificates-awarded/edit-certificate-awarded/edit-certificate-awarded.component';
+import { DeleteCertificateAwardedComponent } from './profile/certificates-awarded/delete-certificate-awarded/delete-certificate-awarded.component';
+import { AddTrainingComponent } from './profile/training/add-training/add-training.component';
+import { EditTrainingComponent } from './profile/training/edit-training/edit-training.component';
+import { DeleteTrainingComponent } from './profile/training/delete-training/delete-training.component';
+import { EditSkillComponent } from './profile/skills/edit-skill/edit-skill.component';
+import { AddSkillComponent } from './profile/skills/add-skill/add-skill.component';
+import { DeleteSkillComponent } from './profile/skills/delete-skill/delete-skill.component';
+import { DeleteLanguageComponent } from './profile/language/delete-language/delete-language.component';
+import { EditLanguageComponent } from './profile/language/edit-language/edit-language.component';
+import { AddLanguageComponent } from './profile/language/add-language/add-language.component';
+import { AddProjectComponent } from './profile/projects/add-project/add-project.component';
+import { DeleteProjectComponent } from './profile/projects/delete-project/delete-project.component';
+import { EditProjectComponent } from './profile/projects/edit-project/edit-project.component';
+import { EditCoverLetterComponent } from './profile/cover-letters/edit-cover-letter/edit-cover-letter.component';
+import { AddCoverLetterComponent } from './profile/cover-letters/add-cover-letter/add-cover-letter.component';
+import { DeleteCoverLetterComponent } from './profile/cover-letters/delete-cover-letter/delete-cover-letter.component';
 // layout
 
 //expereince
 
 
 @NgModule({
+  providers: [
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
+  ],
   declarations: [
     ApplicantsComponent,
-    routingComponents,
     ApplicantHeaderComponent,
     ApplicantFooterComponent,
     ApplicantLeftNavbarComponent,
@@ -55,10 +85,35 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
     ApplicationsComponent,
     FaqsComponent,
     CreateProfileComponent,
-    UpdateProfileComponent
-
+    UpdateProfileComponent,  
+    EditEducationComponent,
+    AddEducationComponent,
+    DeleteEducationComponent,
+    DeleteWorkExperienceComponent,
+    EditWorkExperienceComponent,
+    AddWorkExperienceComponent,
+    AddCertificateAwardedComponent,
+    EditCertificateAwardedComponent,
+    DeleteCertificateAwardedComponent,
+    AddTrainingComponent,
+    EditTrainingComponent,
+    DeleteTrainingComponent,
+    EditSkillComponent,
+    AddSkillComponent,
+    DeleteSkillComponent,
+    DeleteLanguageComponent,
+    EditLanguageComponent,
+    AddLanguageComponent,
+    AddProjectComponent,
+    DeleteProjectComponent,
+    EditProjectComponent,
+    EditCoverLetterComponent,
+    AddCoverLetterComponent,
+    DeleteCoverLetterComponent,
+   
   ],
   imports: [
+    
     CommonModule, 
     ApplicantsRoutingModule,
     FormsModule,
@@ -75,7 +130,18 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    MaterialModule
+    MaterialModule,
+    EditorModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    }),
+   
     
   ]
 })

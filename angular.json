@@ -28,6 +28,11 @@
                 "glob": "abp.signalr-client.js",
                 "input": "node_modules/abp-web-resources/Abp/Framework/scripts/libs",
                 "output": "/assets/abp"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce",
+                "output": "/tinymce/"
               }
             ],
             "styles": [
@@ -54,7 +59,8 @@
               "src/assets/abp-web-resources/abp.sweet-alert.js",
               "src/assets/abp-web-resources/abp.freeze-ui.js",
               "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.moment.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/tinymce/tinymce.min.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,

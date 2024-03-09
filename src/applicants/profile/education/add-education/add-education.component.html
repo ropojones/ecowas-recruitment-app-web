@@ -1,0 +1,137 @@
+<h2 mat-dialog-title class="bg-success fw-semibold">{{ "AddAcademicQualitification" | localize }}</h2>
+<mat-dialog-content>
+
+    <p class="py-4 mb-5 border-bottom">{{ "AddAcademicQualitificationText" | localize }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-4">
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{ "Institution" | localize}}</mat-label>
+                    <input matInput placeholder='{{"InstitutionPlaceholder"|localize}}' formControlName="institution">
+                    <mat-error
+                        *ngIf="form.get('institution').invalid && (form.get('institution').dirty || form.get('institution').touched)">
+                        {{"InstitutionNameRequired"|localize}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+          
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{ "Course" | localize}}</mat-label>
+                    <input matInput placeholder='{{"CoursePlaceholder"|localize}}'
+                        formControlName="course">
+                    <mat-error
+                        *ngIf="form.get('course').invalid && (form.get('course').dirty || form.get('course').touched)">
+                        {{"CourseRequired"|localize}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="form-field">
+                    <mat-label>{{"Qualification" | localize}}</mat-label>
+                    <mat-select formControlName="certificateAwarded">
+                        <mat-option>None</mat-option>
+                        <mat-option value="Professorship">{{"Degree"|localize}}</mat-option>
+                        <mat-option value="Doctorate/Mphil">{{"Doctorate"|localize}}</mat-option>
+                        <mat-option value="Masters/MBA">{{"Degree"|localize}}</mat-option>
+                        <mat-option value="Degree">{{"Degree"|localize}}</mat-option>
+                        <mat-option value="Higher Diploma">{{"HigherDiploma"|localize}}</mat-option>
+                        <mat-option value="Ordinary Diploma">{{"OrdinaryDiploma"|localize}}</mat-option>
+                        <mat-option value="High School Certificate">{{"HighSchoolCertificate"|localize}}</mat-option>
+                        <mat-option value="Vocational Certificate">{{"VocationalCertificate"|localize}}</mat-option>
+                        <mat-option value="Primary School Certficate">{{"PrimarySchoolCertficate"|localize}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="form-field">
+                            <mat-label>{{"StartMonth" | localize}}</mat-label>
+                            <mat-select formControlName="startMonth">
+                                <mat-option>None</mat-option>
+                                <mat-option value="January">{{"January"|localize}}</mat-option>
+                                <mat-option value="February">{{"February"|localize}}</mat-option>
+                                <mat-option value="March">{{"March"|localize}}</mat-option>
+                                <mat-option value="April">{{"April"|localize}}</mat-option>
+                                <mat-option value="May">{{"May"|localize}}</mat-option>
+                                <mat-option value="June">{{"June"|localize}}</mat-option>
+                                <mat-option value="July">{{"July"|localize}}</mat-option>
+                                <mat-option value="August">{{"August"|localize}}</mat-option>
+                                <mat-option value="September">{{"September"|localize}}</mat-option>
+                                <mat-option value="October">{{"October"|localize}}</mat-option>
+                                <mat-option value="November">{{"November"|localize}}</mat-option>
+                                <mat-option value="December">{{"December"|localize}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="form-field">
+                            <mat-label>{{ "StartYear" | localize}}</mat-label>
+                            <input matInput type="number" placeholder="*StartYearPlaceholder" formControlName="startYear">
+                            <mat-error
+                                *ngIf="form.get('startYear').invalid && (form.get('startYear').dirty || form.get('startYear').touched)">
+                                {{"StarYearRequired"|localize}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="form-field">
+                            <mat-label>{{"EndMonth" | localize}}</mat-label>
+                            <mat-select formControlName="endMonth">
+                                <mat-option>None</mat-option>
+                                <mat-option value="January">{{"January"|localize}}</mat-option>
+                                <mat-option value="February">{{"February"|localize}}</mat-option>
+                                <mat-option value="March">{{"March"|localize}}</mat-option>
+                                <mat-option value="April">{{"April"|localize}}</mat-option>
+                                <mat-option value="May">{{"May"|localize}}</mat-option>
+                                <mat-option value="June">{{"June"|localize}}</mat-option>
+                                <mat-option value="July">{{"July"|localize}}</mat-option>
+                                <mat-option value="August">{{"August"|localize}}</mat-option>
+                                <mat-option value="September">{{"September"|localize}}</mat-option>
+                                <mat-option value="October">{{"October"|localize}}</mat-option>
+                                <mat-option value="November">{{"November"|localize}}</mat-option>
+                                <mat-option value="December">{{"December"|localize}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="form-field">
+                            <mat-label>{{ "EndYear" | localize}}</mat-label>
+                            <input matInput type="number" placeholder="EndYearPlaceholder" formControlName="endYear">
+                            <mat-error
+                                *ngIf="form.get('endYear').invalid && (form.get('endYear').dirty || form.get('endYear').touched)">
+                                {{"EndYearRequired"|localize}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+              
+            </div>
+
+        </div>
+
+
+        <div class="row mb-4">
+           
+        </div>
+        <input type="hidden" name="applicantId" id="applicantId" formControlName="applicantId" />
+
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions class="px-4 py-4 mt-3 justify-content-between">
+    <button mat-button  (click)="Cancel()">{{ "Cancel" | localize }}</button>
+    <button mat-raised-button cdkFocusInitial class="bg-success px-5" (click)="onSubmit()">{{ "AddQualification"|
+        localize }}</button>
+</mat-dialog-actions>

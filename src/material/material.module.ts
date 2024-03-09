@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -42,7 +42,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
-const MaterialComponents = [MatAutocompleteModule,
+const MaterialComponents = [
+  MatAutocompleteModule,
   MatCheckboxModule,
   MatDatepickerModule,
   MatFormFieldModule,
@@ -81,6 +82,9 @@ const MaterialComponents = [MatAutocompleteModule,
 @NgModule({
   declarations: [],
   imports: [MaterialComponents],
-  exports: [MaterialComponents]
+  exports: [MaterialComponents],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+  ]
 })
 export class MaterialModule { }

@@ -994,6 +994,69 @@ export class CertificateAwardedServiceProxy {
     }
 
     /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getCertficateAwardedByApplicant(applicantid: number | undefined): Observable<CertificateAwardedDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/CertificateAwarded/GetCertficateAwardedByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetCertficateAwardedByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetCertficateAwardedByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<CertificateAwardedDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<CertificateAwardedDto[]>;
+        }));
+    }
+
+    protected processGetCertficateAwardedByApplicant(response: HttpResponseBase): Observable<CertificateAwardedDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(CertificateAwardedDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param keyword (optional) 
      * @param isActive (optional) 
      * @param sorting (optional) 
@@ -1982,6 +2045,69 @@ export class CoverLetterServiceProxy {
     }
 
     /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getCoverLetterByApplicant(applicantid: number | undefined): Observable<CoverLetterDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/CoverLetter/GetCoverLetterByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetCoverLetterByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetCoverLetterByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<CoverLetterDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<CoverLetterDto[]>;
+        }));
+    }
+
+    protected processGetCoverLetterByApplicant(response: HttpResponseBase): Observable<CoverLetterDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(CoverLetterDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param keyword (optional) 
      * @param isActive (optional) 
      * @param sorting (optional) 
@@ -2598,6 +2724,69 @@ export class EducationServiceProxy {
     }
 
     /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getEducationByApplicant(applicantid: number | undefined): Observable<EducationDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Education/GetEducationByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetEducationByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetEducationByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<EducationDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<EducationDto[]>;
+        }));
+    }
+
+    protected processGetEducationByApplicant(response: HttpResponseBase): Observable<EducationDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(EducationDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param keyword (optional) 
      * @param isActive (optional) 
      * @param sorting (optional) 
@@ -2895,6 +3084,69 @@ export class ExperienceServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ExperienceDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getExperienceByApplicant(applicantid: number | undefined): Observable<ExperienceDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Experience/GetExperienceByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetExperienceByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetExperienceByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ExperienceDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ExperienceDto[]>;
+        }));
+    }
+
+    protected processGetExperienceByApplicant(response: HttpResponseBase): Observable<ExperienceDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(ExperienceDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -4810,6 +5062,69 @@ export class LanguageServiceProxy {
     }
 
     /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getLanguageByApplicant(applicantid: number | undefined): Observable<LanguageDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Language/GetLanguageByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetLanguageByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetLanguageByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<LanguageDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<LanguageDto[]>;
+        }));
+    }
+
+    protected processGetLanguageByApplicant(response: HttpResponseBase): Observable<LanguageDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(LanguageDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param keyword (optional) 
      * @param isActive (optional) 
      * @param sorting (optional) 
@@ -5176,6 +5491,69 @@ export class ProjectServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProjectDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getProjectByApplicant(applicantid: number | undefined): Observable<ProjectDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Project/GetProjectByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetProjectByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetProjectByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ProjectDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ProjectDto[]>;
+        }));
+    }
+
+    protected processGetProjectByApplicant(response: HttpResponseBase): Observable<ProjectDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(ProjectDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -6019,6 +6397,69 @@ export class SkillServiceProxy {
     }
 
     /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getSkillByApplicant(applicantid: number | undefined): Observable<SkillDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Skill/GetSkillByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSkillByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSkillByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<SkillDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<SkillDto[]>;
+        }));
+    }
+
+    protected processGetSkillByApplicant(response: HttpResponseBase): Observable<SkillDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(SkillDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
      * @param keyword (optional) 
      * @param isActive (optional) 
      * @param sorting (optional) 
@@ -6687,6 +7128,69 @@ export class TrainingServiceProxy {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = TrainingDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    /**
+     * @param applicantid (optional) 
+     * @return Success
+     */
+    getTrainingByApplicant(applicantid: number | undefined): Observable<TrainingDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Training/GetTrainingByApplicant?";
+        if (applicantid === null)
+            throw new Error("The parameter 'applicantid' cannot be null.");
+        else if (applicantid !== undefined)
+            url_ += "applicantid=" + encodeURIComponent("" + applicantid) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetTrainingByApplicant(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetTrainingByApplicant(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<TrainingDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<TrainingDto[]>;
+        }));
+    }
+
+    protected processGetTrainingByApplicant(response: HttpResponseBase): Observable<TrainingDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200.push(TrainingDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -8195,12 +8699,12 @@ export class ApplicantDto implements IApplicantDto {
     address: string | undefined;
     email: string | undefined;
     educationLevel: string | undefined;
-    courseOfStudy: string | undefined;
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    isEcowas: boolean | undefined;
+    isEcowas: string | undefined;
     isEcowasVerified: boolean | undefined;
+    ecowasInstitution: string | undefined;
     availability: string | undefined;
     passportUrl: string | undefined;
 
@@ -8231,12 +8735,12 @@ export class ApplicantDto implements IApplicantDto {
             this.address = _data["address"];
             this.email = _data["email"];
             this.educationLevel = _data["educationLevel"];
-            this.courseOfStudy = _data["courseOfStudy"];
             this.country = _data["country"];
             this.state = _data["state"];
             this.userId = _data["userId"];
             this.isEcowas = _data["isEcowas"];
             this.isEcowasVerified = _data["isEcowasVerified"];
+            this.ecowasInstitution = _data["ecowasInstitution"];
             this.availability = _data["availability"];
             this.passportUrl = _data["passportUrl"];
         }
@@ -8267,12 +8771,12 @@ export class ApplicantDto implements IApplicantDto {
         data["address"] = this.address;
         data["email"] = this.email;
         data["educationLevel"] = this.educationLevel;
-        data["courseOfStudy"] = this.courseOfStudy;
         data["country"] = this.country;
         data["state"] = this.state;
         data["userId"] = this.userId;
         data["isEcowas"] = this.isEcowas;
         data["isEcowasVerified"] = this.isEcowasVerified;
+        data["ecowasInstitution"] = this.ecowasInstitution;
         data["availability"] = this.availability;
         data["passportUrl"] = this.passportUrl;
         return data;
@@ -8303,12 +8807,12 @@ export interface IApplicantDto {
     address: string | undefined;
     email: string | undefined;
     educationLevel: string | undefined;
-    courseOfStudy: string | undefined;
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    isEcowas: boolean | undefined;
+    isEcowas: string | undefined;
     isEcowasVerified: boolean | undefined;
+    ecowasInstitution: string | undefined;
     availability: string | undefined;
     passportUrl: string | undefined;
 }
@@ -8707,7 +9211,7 @@ export class CertificateAwardedDto implements ICertificateAwardedDto {
     id: number;
     title: string | undefined;
     type: string | undefined;
-    yearReceived: string | undefined;
+    yearReceived: number;
     applicantId: number;
 
     constructor(data?: ICertificateAwardedDto) {
@@ -8758,7 +9262,7 @@ export interface ICertificateAwardedDto {
     id: number;
     title: string | undefined;
     type: string | undefined;
-    yearReceived: string | undefined;
+    yearReceived: number;
     applicantId: number;
 }
 
@@ -9156,6 +9660,7 @@ export interface ICountryDtoPagedResultDto {
 
 export class CoverLetterDto implements ICoverLetterDto {
     id: number;
+    title: string | undefined;
     letter: string | undefined;
     applicantId: number;
 
@@ -9171,6 +9676,7 @@ export class CoverLetterDto implements ICoverLetterDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.title = _data["title"];
             this.letter = _data["letter"];
             this.applicantId = _data["applicantId"];
         }
@@ -9186,6 +9692,7 @@ export class CoverLetterDto implements ICoverLetterDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["title"] = this.title;
         data["letter"] = this.letter;
         data["applicantId"] = this.applicantId;
         return data;
@@ -9201,6 +9708,7 @@ export class CoverLetterDto implements ICoverLetterDto {
 
 export interface ICoverLetterDto {
     id: number;
+    title: string | undefined;
     letter: string | undefined;
     applicantId: number;
 }
@@ -9276,12 +9784,12 @@ export class CreateApplicantDto implements ICreateApplicantDto {
     address: string | undefined;
     email: string | undefined;
     educationLevel: string | undefined;
-    courseOfStudy: string | undefined;
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    isEcowas: boolean | undefined;
+    isEcowas: string | undefined;
     isEcowasVerified: boolean | undefined;
+    ecowasInstitution: string | undefined;
     availability: string | undefined;
     passportUrl: string | undefined;
 
@@ -9311,12 +9819,12 @@ export class CreateApplicantDto implements ICreateApplicantDto {
             this.address = _data["address"];
             this.email = _data["email"];
             this.educationLevel = _data["educationLevel"];
-            this.courseOfStudy = _data["courseOfStudy"];
             this.country = _data["country"];
             this.state = _data["state"];
             this.userId = _data["userId"];
             this.isEcowas = _data["isEcowas"];
             this.isEcowasVerified = _data["isEcowasVerified"];
+            this.ecowasInstitution = _data["ecowasInstitution"];
             this.availability = _data["availability"];
             this.passportUrl = _data["passportUrl"];
         }
@@ -9346,12 +9854,12 @@ export class CreateApplicantDto implements ICreateApplicantDto {
         data["address"] = this.address;
         data["email"] = this.email;
         data["educationLevel"] = this.educationLevel;
-        data["courseOfStudy"] = this.courseOfStudy;
         data["country"] = this.country;
         data["state"] = this.state;
         data["userId"] = this.userId;
         data["isEcowas"] = this.isEcowas;
         data["isEcowasVerified"] = this.isEcowasVerified;
+        data["ecowasInstitution"] = this.ecowasInstitution;
         data["availability"] = this.availability;
         data["passportUrl"] = this.passportUrl;
         return data;
@@ -9381,12 +9889,12 @@ export interface ICreateApplicantDto {
     address: string | undefined;
     email: string | undefined;
     educationLevel: string | undefined;
-    courseOfStudy: string | undefined;
     country: string | undefined;
     state: string | undefined;
     userId: number;
-    isEcowas: boolean | undefined;
+    isEcowas: string | undefined;
     isEcowasVerified: boolean | undefined;
+    ecowasInstitution: string | undefined;
     availability: string | undefined;
     passportUrl: string | undefined;
 }
@@ -9497,7 +10005,7 @@ export interface ICreateApplicationDto {
 export class CreateCertificateAwardedDto implements ICreateCertificateAwardedDto {
     title: string | undefined;
     type: string | undefined;
-    yearReceived: string | undefined;
+    yearReceived: number;
     applicantId: number;
 
     constructor(data?: ICreateCertificateAwardedDto) {
@@ -9545,7 +10053,7 @@ export class CreateCertificateAwardedDto implements ICreateCertificateAwardedDto
 export interface ICreateCertificateAwardedDto {
     title: string | undefined;
     type: string | undefined;
-    yearReceived: string | undefined;
+    yearReceived: number;
     applicantId: number;
 }
 
@@ -9636,6 +10144,7 @@ export interface ICreateCountryDto {
 }
 
 export class CreateCoverLetterDto implements ICreateCoverLetterDto {
+    title: string | undefined;
     letter: string | undefined;
     applicantId: number;
 
@@ -9650,6 +10159,7 @@ export class CreateCoverLetterDto implements ICreateCoverLetterDto {
 
     init(_data?: any) {
         if (_data) {
+            this.title = _data["title"];
             this.letter = _data["letter"];
             this.applicantId = _data["applicantId"];
         }
@@ -9664,6 +10174,7 @@ export class CreateCoverLetterDto implements ICreateCoverLetterDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
         data["letter"] = this.letter;
         data["applicantId"] = this.applicantId;
         return data;
@@ -9678,6 +10189,7 @@ export class CreateCoverLetterDto implements ICreateCoverLetterDto {
 }
 
 export interface ICreateCoverLetterDto {
+    title: string | undefined;
     letter: string | undefined;
     applicantId: number;
 }
@@ -9732,8 +10244,11 @@ export interface ICreateCustomDto {
 export class CreateEducationDto implements ICreateEducationDto {
     institution: string | undefined;
     certificateAwarded: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    course: string | undefined;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 
     constructor(data?: ICreateEducationDto) {
@@ -9749,8 +10264,11 @@ export class CreateEducationDto implements ICreateEducationDto {
         if (_data) {
             this.institution = _data["institution"];
             this.certificateAwarded = _data["certificateAwarded"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.course = _data["course"];
+            this.startMonth = _data["startMonth"];
+            this.startYear = _data["startYear"];
+            this.endMonth = _data["endMonth"];
+            this.endYear = _data["endYear"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -9766,8 +10284,11 @@ export class CreateEducationDto implements ICreateEducationDto {
         data = typeof data === 'object' ? data : {};
         data["institution"] = this.institution;
         data["certificateAwarded"] = this.certificateAwarded;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["course"] = this.course;
+        data["startMonth"] = this.startMonth;
+        data["startYear"] = this.startYear;
+        data["endMonth"] = this.endMonth;
+        data["endYear"] = this.endYear;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -9783,8 +10304,11 @@ export class CreateEducationDto implements ICreateEducationDto {
 export interface ICreateEducationDto {
     institution: string | undefined;
     certificateAwarded: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    course: string | undefined;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 }
 
@@ -9794,8 +10318,11 @@ export class CreateExperienceDto implements ICreateExperienceDto {
     jobTitle: string | undefined;
     level: string | undefined;
     function: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    location: string | undefined;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 
     constructor(data?: ICreateExperienceDto) {
@@ -9814,8 +10341,11 @@ export class CreateExperienceDto implements ICreateExperienceDto {
             this.jobTitle = _data["jobTitle"];
             this.level = _data["level"];
             this.function = _data["function"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.location = _data["location"];
+            this.startMonth = _data["startMonth"];
+            this.startYear = _data["startYear"];
+            this.endMonth = _data["endMonth"];
+            this.endYear = _data["endYear"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -9834,8 +10364,11 @@ export class CreateExperienceDto implements ICreateExperienceDto {
         data["jobTitle"] = this.jobTitle;
         data["level"] = this.level;
         data["function"] = this.function;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["location"] = this.location;
+        data["startMonth"] = this.startMonth;
+        data["startYear"] = this.startYear;
+        data["endMonth"] = this.endMonth;
+        data["endYear"] = this.endYear;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -9854,8 +10387,11 @@ export interface ICreateExperienceDto {
     jobTitle: string | undefined;
     level: string | undefined;
     function: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    location: string | undefined;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 }
 
@@ -9877,6 +10413,8 @@ export class CreateJobDto implements ICreateJobDto {
     supervisor: string | undefined;
     annualSalary: number;
     ageLimit: number;
+    jobMail: string | undefined;
+    status: boolean;
 
     constructor(data?: ICreateJobDto) {
         if (data) {
@@ -9906,6 +10444,8 @@ export class CreateJobDto implements ICreateJobDto {
             this.supervisor = _data["supervisor"];
             this.annualSalary = _data["annualSalary"];
             this.ageLimit = _data["ageLimit"];
+            this.jobMail = _data["jobMail"];
+            this.status = _data["status"];
         }
     }
 
@@ -9935,6 +10475,8 @@ export class CreateJobDto implements ICreateJobDto {
         data["supervisor"] = this.supervisor;
         data["annualSalary"] = this.annualSalary;
         data["ageLimit"] = this.ageLimit;
+        data["jobMail"] = this.jobMail;
+        data["status"] = this.status;
         return data;
     }
 
@@ -9964,6 +10506,8 @@ export interface ICreateJobDto {
     supervisor: string | undefined;
     annualSalary: number;
     ageLimit: number;
+    jobMail: string | undefined;
+    status: boolean;
 }
 
 export class CreateJobEcowasCompetenceDto implements ICreateJobEcowasCompetenceDto {
@@ -10187,7 +10731,11 @@ export interface ICreateJobSpecialRequirementDto {
 }
 
 export class CreateLanguageDto implements ICreateLanguageDto {
-    languageString: string | undefined;
+    language: string | undefined;
+    speakingProficiency: boolean;
+    writtingProficiency: boolean;
+    readingProficiency: boolean;
+    understandingProficiency: boolean;
     applicantId: number;
 
     constructor(data?: ICreateLanguageDto) {
@@ -10201,7 +10749,11 @@ export class CreateLanguageDto implements ICreateLanguageDto {
 
     init(_data?: any) {
         if (_data) {
-            this.languageString = _data["languageString"];
+            this.language = _data["language"];
+            this.speakingProficiency = _data["speakingProficiency"];
+            this.writtingProficiency = _data["writtingProficiency"];
+            this.readingProficiency = _data["readingProficiency"];
+            this.understandingProficiency = _data["understandingProficiency"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -10215,7 +10767,11 @@ export class CreateLanguageDto implements ICreateLanguageDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["languageString"] = this.languageString;
+        data["language"] = this.language;
+        data["speakingProficiency"] = this.speakingProficiency;
+        data["writtingProficiency"] = this.writtingProficiency;
+        data["readingProficiency"] = this.readingProficiency;
+        data["understandingProficiency"] = this.understandingProficiency;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -10229,13 +10785,18 @@ export class CreateLanguageDto implements ICreateLanguageDto {
 }
 
 export interface ICreateLanguageDto {
-    languageString: string | undefined;
+    language: string | undefined;
+    speakingProficiency: boolean;
+    writtingProficiency: boolean;
+    readingProficiency: boolean;
+    understandingProficiency: boolean;
     applicantId: number;
 }
 
 export class CreateProjectDto implements ICreateProjectDto {
     title: string | undefined;
     description: string | undefined;
+    year: number;
     applicantId: number;
 
     constructor(data?: ICreateProjectDto) {
@@ -10251,6 +10812,7 @@ export class CreateProjectDto implements ICreateProjectDto {
         if (_data) {
             this.title = _data["title"];
             this.description = _data["description"];
+            this.year = _data["year"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -10266,6 +10828,7 @@ export class CreateProjectDto implements ICreateProjectDto {
         data = typeof data === 'object' ? data : {};
         data["title"] = this.title;
         data["description"] = this.description;
+        data["year"] = this.year;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -10281,6 +10844,7 @@ export class CreateProjectDto implements ICreateProjectDto {
 export interface ICreateProjectDto {
     title: string | undefined;
     description: string | undefined;
+    year: number;
     applicantId: number;
 }
 
@@ -10352,7 +10916,7 @@ export interface ICreateRoleDto {
 }
 
 export class CreateSkillDto implements ICreateSkillDto {
-    skillString: string | undefined;
+    skill: string | undefined;
     description: string | undefined;
     applicantId: number;
 
@@ -10367,7 +10931,7 @@ export class CreateSkillDto implements ICreateSkillDto {
 
     init(_data?: any) {
         if (_data) {
-            this.skillString = _data["skillString"];
+            this.skill = _data["skill"];
             this.description = _data["description"];
             this.applicantId = _data["applicantId"];
         }
@@ -10382,7 +10946,7 @@ export class CreateSkillDto implements ICreateSkillDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["skillString"] = this.skillString;
+        data["skill"] = this.skill;
         data["description"] = this.description;
         data["applicantId"] = this.applicantId;
         return data;
@@ -10397,7 +10961,7 @@ export class CreateSkillDto implements ICreateSkillDto {
 }
 
 export interface ICreateSkillDto {
-    skillString: string | undefined;
+    skill: string | undefined;
     description: string | undefined;
     applicantId: number;
 }
@@ -10464,8 +11028,8 @@ export interface ICreateTenantDto {
 export class CreateTrainingDto implements ICreateTrainingDto {
     organization: string | undefined;
     title: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    month: string | undefined;
+    year: number;
     applicantId: number;
 
     constructor(data?: ICreateTrainingDto) {
@@ -10481,8 +11045,8 @@ export class CreateTrainingDto implements ICreateTrainingDto {
         if (_data) {
             this.organization = _data["organization"];
             this.title = _data["title"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.month = _data["month"];
+            this.year = _data["year"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -10498,8 +11062,8 @@ export class CreateTrainingDto implements ICreateTrainingDto {
         data = typeof data === 'object' ? data : {};
         data["organization"] = this.organization;
         data["title"] = this.title;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["month"] = this.month;
+        data["year"] = this.year;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -10515,8 +11079,8 @@ export class CreateTrainingDto implements ICreateTrainingDto {
 export interface ICreateTrainingDto {
     organization: string | undefined;
     title: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    month: string | undefined;
+    year: number;
     applicantId: number;
 }
 
@@ -10799,8 +11363,11 @@ export class EducationDto implements IEducationDto {
     id: number;
     institution: string | undefined;
     certificateAwarded: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    course: string | undefined;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 
     constructor(data?: IEducationDto) {
@@ -10817,8 +11384,11 @@ export class EducationDto implements IEducationDto {
             this.id = _data["id"];
             this.institution = _data["institution"];
             this.certificateAwarded = _data["certificateAwarded"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.course = _data["course"];
+            this.startMonth = _data["startMonth"];
+            this.startYear = _data["startYear"];
+            this.endMonth = _data["endMonth"];
+            this.endYear = _data["endYear"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -10835,8 +11405,11 @@ export class EducationDto implements IEducationDto {
         data["id"] = this.id;
         data["institution"] = this.institution;
         data["certificateAwarded"] = this.certificateAwarded;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["course"] = this.course;
+        data["startMonth"] = this.startMonth;
+        data["startYear"] = this.startYear;
+        data["endMonth"] = this.endMonth;
+        data["endYear"] = this.endYear;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -10853,8 +11426,11 @@ export interface IEducationDto {
     id: number;
     institution: string | undefined;
     certificateAwarded: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    course: string | undefined;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 }
 
@@ -10919,9 +11495,12 @@ export class ExperienceDto implements IExperienceDto {
     responsibiities: string | undefined;
     jobTitle: string | undefined;
     level: string | undefined;
+    location: string | undefined;
     function: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 
     constructor(data?: IExperienceDto) {
@@ -10940,9 +11519,12 @@ export class ExperienceDto implements IExperienceDto {
             this.responsibiities = _data["responsibiities"];
             this.jobTitle = _data["jobTitle"];
             this.level = _data["level"];
+            this.location = _data["location"];
             this.function = _data["function"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.startMonth = _data["startMonth"];
+            this.startYear = _data["startYear"];
+            this.endMonth = _data["endMonth"];
+            this.endYear = _data["endYear"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -10961,9 +11543,12 @@ export class ExperienceDto implements IExperienceDto {
         data["responsibiities"] = this.responsibiities;
         data["jobTitle"] = this.jobTitle;
         data["level"] = this.level;
+        data["location"] = this.location;
         data["function"] = this.function;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["startMonth"] = this.startMonth;
+        data["startYear"] = this.startYear;
+        data["endMonth"] = this.endMonth;
+        data["endYear"] = this.endYear;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -10982,9 +11567,12 @@ export interface IExperienceDto {
     responsibiities: string | undefined;
     jobTitle: string | undefined;
     level: string | undefined;
+    location: string | undefined;
     function: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startMonth: string | undefined;
+    startYear: number;
+    endMonth: string | undefined;
+    endYear: number;
     applicantId: number;
 }
 
@@ -11364,6 +11952,8 @@ export class JobDto implements IJobDto {
     supervisor: string | undefined;
     annualSalary: number;
     ageLimit: number;
+    jobMail: string | undefined;
+    status: boolean;
 
     constructor(data?: IJobDto) {
         if (data) {
@@ -11394,6 +11984,8 @@ export class JobDto implements IJobDto {
             this.supervisor = _data["supervisor"];
             this.annualSalary = _data["annualSalary"];
             this.ageLimit = _data["ageLimit"];
+            this.jobMail = _data["jobMail"];
+            this.status = _data["status"];
         }
     }
 
@@ -11424,6 +12016,8 @@ export class JobDto implements IJobDto {
         data["supervisor"] = this.supervisor;
         data["annualSalary"] = this.annualSalary;
         data["ageLimit"] = this.ageLimit;
+        data["jobMail"] = this.jobMail;
+        data["status"] = this.status;
         return data;
     }
 
@@ -11454,6 +12048,8 @@ export interface IJobDto {
     supervisor: string | undefined;
     annualSalary: number;
     ageLimit: number;
+    jobMail: string | undefined;
+    status: boolean;
 }
 
 export class JobDtoPagedResultDto implements IJobDtoPagedResultDto {
@@ -11969,7 +12565,11 @@ export interface IJobSpecialRequirementDtoPagedResultDto {
 
 export class LanguageDto implements ILanguageDto {
     id: number;
-    languageString: string | undefined;
+    language: string | undefined;
+    speakingProficiency: boolean;
+    writtingProficiency: boolean;
+    readingProficiency: boolean;
+    understandingProficiency: boolean;
     applicantId: number;
 
     constructor(data?: ILanguageDto) {
@@ -11984,7 +12584,11 @@ export class LanguageDto implements ILanguageDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.languageString = _data["languageString"];
+            this.language = _data["language"];
+            this.speakingProficiency = _data["speakingProficiency"];
+            this.writtingProficiency = _data["writtingProficiency"];
+            this.readingProficiency = _data["readingProficiency"];
+            this.understandingProficiency = _data["understandingProficiency"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -11999,7 +12603,11 @@ export class LanguageDto implements ILanguageDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["languageString"] = this.languageString;
+        data["language"] = this.language;
+        data["speakingProficiency"] = this.speakingProficiency;
+        data["writtingProficiency"] = this.writtingProficiency;
+        data["readingProficiency"] = this.readingProficiency;
+        data["understandingProficiency"] = this.understandingProficiency;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -12014,7 +12622,11 @@ export class LanguageDto implements ILanguageDto {
 
 export interface ILanguageDto {
     id: number;
-    languageString: string | undefined;
+    language: string | undefined;
+    speakingProficiency: boolean;
+    writtingProficiency: boolean;
+    readingProficiency: boolean;
+    understandingProficiency: boolean;
     applicantId: number;
 }
 
@@ -12238,6 +12850,7 @@ export class ProjectDto implements IProjectDto {
     id: number;
     title: string | undefined;
     description: string | undefined;
+    year: number;
     applicantId: number;
 
     constructor(data?: IProjectDto) {
@@ -12254,6 +12867,7 @@ export class ProjectDto implements IProjectDto {
             this.id = _data["id"];
             this.title = _data["title"];
             this.description = _data["description"];
+            this.year = _data["year"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -12270,6 +12884,7 @@ export class ProjectDto implements IProjectDto {
         data["id"] = this.id;
         data["title"] = this.title;
         data["description"] = this.description;
+        data["year"] = this.year;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -12286,6 +12901,7 @@ export interface IProjectDto {
     id: number;
     title: string | undefined;
     description: string | undefined;
+    year: number;
     applicantId: number;
 }
 
@@ -12857,7 +13473,7 @@ export interface IRoleListDtoListResultDto {
 
 export class SkillDto implements ISkillDto {
     id: number;
-    skillString: string | undefined;
+    skill: string | undefined;
     description: string | undefined;
     applicantId: number;
 
@@ -12873,7 +13489,7 @@ export class SkillDto implements ISkillDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.skillString = _data["skillString"];
+            this.skill = _data["skill"];
             this.description = _data["description"];
             this.applicantId = _data["applicantId"];
         }
@@ -12889,7 +13505,7 @@ export class SkillDto implements ISkillDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["skillString"] = this.skillString;
+        data["skill"] = this.skill;
         data["description"] = this.description;
         data["applicantId"] = this.applicantId;
         return data;
@@ -12905,7 +13521,7 @@ export class SkillDto implements ISkillDto {
 
 export interface ISkillDto {
     id: number;
-    skillString: string | undefined;
+    skill: string | undefined;
     description: string | undefined;
     applicantId: number;
 }
@@ -13136,8 +13752,8 @@ export class TrainingDto implements ITrainingDto {
     id: number;
     organization: string | undefined;
     title: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    month: string | undefined;
+    year: number;
     applicantId: number;
 
     constructor(data?: ITrainingDto) {
@@ -13154,8 +13770,8 @@ export class TrainingDto implements ITrainingDto {
             this.id = _data["id"];
             this.organization = _data["organization"];
             this.title = _data["title"];
-            this.startDate = _data["startDate"] ? moment(_data["startDate"].toString()) : <any>undefined;
-            this.endDate = _data["endDate"] ? moment(_data["endDate"].toString()) : <any>undefined;
+            this.month = _data["month"];
+            this.year = _data["year"];
             this.applicantId = _data["applicantId"];
         }
     }
@@ -13172,8 +13788,8 @@ export class TrainingDto implements ITrainingDto {
         data["id"] = this.id;
         data["organization"] = this.organization;
         data["title"] = this.title;
-        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
-        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["month"] = this.month;
+        data["year"] = this.year;
         data["applicantId"] = this.applicantId;
         return data;
     }
@@ -13190,8 +13806,8 @@ export interface ITrainingDto {
     id: number;
     organization: string | undefined;
     title: string | undefined;
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    month: string | undefined;
+    year: number;
     applicantId: number;
 }
 

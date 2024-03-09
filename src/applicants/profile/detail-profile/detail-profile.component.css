@@ -2,3 +2,9 @@
     border-radius: 0px !important
    
 } */
+
+
+.mdc-list-item {
+  
+   min-height: 75px !important;
+}
