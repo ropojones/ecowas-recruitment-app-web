@@ -80,7 +80,6 @@ import { DeleteCoverLetterComponent } from './profile/cover-letters/delete-cover
     ApplicantSidebarLogoComponent,
     ApplicantHeaderUserMenuComponent,
     HowToApplyComponent,
-    ContactUsComponent,
     VacanciesComponent,
     ApplicationsComponent,
     FaqsComponent,

@@ -109,6 +109,7 @@ export class DetailProfileComponent extends AppComponentBase implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getProfile();
+      window.location.reload();
     });
   }
 

@@ -10,36 +10,35 @@
             </div> -->
         <div class="card-body bg-success p-5 text-center lh-base">
 
-            <!-- <img class="profile-image mb-4 border border-white border-3" src="../../../assets/img/user.png"
+            <img class="profile-image mb-4 border border-white border-3" src="../../../assets/img/user.png"
                 height="150" />
 
-            <h3 *ngIf="applicant else nameBlock"> {{ applicant.firstName }} {{ applicant.middleName }} {{
-                applicant.lastName }}</h3>
+            <p class="fs-4 fw-semibold mb-1" *ngIf="firstname !='' || lastname!='' || middlename !=''; else nameBlock"> {{ firstname }} {{ middlename }} {{lastname }}</p>
             <ng-template #nameBlock>
-                <h5> {{"FullName" | localize}}: {{"NotSpecified" | localize}}</h5>
+                <p class="fs-4 fw-semibold mb-1"> {{"FullName" | localize}}: {{"NotSpecified" | localize}}</p>
             </ng-template>
-            <h5 *ngIf="applicant.headline != '' else headlineBlock"> {{ applicant.headline }}</h5><br>
+
+            <p class="fs-6 fw-normal mb-1" *ngIf="headline != '' else headlineBlock"> {{ headline }}</p>
             <ng-template #headlineBlock>
-                <h5> {{"Headline" | localize}}: {{"NotSpecified" | localize}}</h5>
+                <p  class="fs-6 fw-normal  mb-1"> {{"Headline" | localize}}: {{"NotSpecified" | localize}}</p>
             </ng-template>
-            <h6 *ngIf="applicant.yearsOfExperience > 0 else experienceBlock"> {{"Experience" | localize}}: {{
-                applicant.yearsOfExperience}} {{"Years" | localize}}</h6>
+            <p class="fs-6 fw-normal mb-1" *ngIf="experience > 0 else experienceBlock"> {{"Experience" | localize}}: {{experience}} {{"Years" | localize}}</p>
             <ng-template #experienceBlock>
-                <h6> {{"Experience" | localize}}: {{"NotSpecified" | localize}}</h6>
+                <p class="fs-6 fw-normal mb-1"> {{"Experience" | localize}} : {{"NotSpecified" | localize}}</p>
             </ng-template>
-            <h6 *ngIf="applicant.dateOfBirth != null else dobBlock"> {{"DateofBirth" | localize}}:
-                {{applicant.dateOfBirth }}</h6>
+            <p class="fs-6 fw-normal mb-1" *ngIf="dateofbirth != null else dobBlock"> {{"DateofBirth" | localize}}: {{dateofbirth }}</p>
             <ng-template #dobBlock>
-                <h6> {{"DateofBirth" | localize}}: {{"NotSpecified" | localize}}</h6>
+                <p class="fs-6 fw-normal mb-1"> {{"DateofBirth" | localize}}: {{"NotSpecified" | localize}}</p>
             </ng-template>
-
-            <h6 *ngIf="applicant.country != '' else countryBlock"> {{"Country" | localize}}: {{ applicant.country }}
-            </h6>
+            <p class="fs-6 fw-normal mb-1" *ngIf="country != '' else countryBlock"> {{"Country" | localize}}: {{ country }}
+            </p>
             <ng-template #countryBlock>
-                <h6> {{"Country" | localize}}: {{"NotSpecified" | localize}}</h6>
-            </ng-template> -->
-
-        </div>
+                <p> {{"Country" | localize}}: {{"NotSpecified" | localize}}</p>
+            </ng-template>
+            <!-- 
+           
+-->
+        </div> 
         <!-- <div class="card-footer  bg-success p-2">
 
             </div> -->
