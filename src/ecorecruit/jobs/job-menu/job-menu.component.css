@@ -1,0 +1,10 @@
+.active-job{
+    background-color: #00a9af;
+    min-height: 50px;
+    color:#fff;
+}
+.active-job-applications{
+      background-color: #7b62a2;
+    min-height: 50px;
+    color:#fff;
+}

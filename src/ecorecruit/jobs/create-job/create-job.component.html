@@ -1,0 +1,210 @@
+<div class="row">
+  <div class="col">
+    <mat-card class="shadow rounded-0">
+      <mat-card-header class="mb-4 px-4">
+        <mat-card-title class="fw-semibold mb-2">{{"JobCreationTitle" | localize }}</mat-card-title>
+        <mat-card-subtitle class="fs-6 mb-2">{{"JobCreationSubtitle" | localize }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="px-4">
+
+        <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="example-form">
+
+          <div class="row mb-4">
+            <div class="col">
+              <mat-form-field>
+                <input matInput formControlName="title" placeholder="Title">
+                <mat-error *ngIf="jobForm.get('title').invalid && jobForm.get('title').touched">
+                  {{"TitleRequired"}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-6">
+              <mat-form-field class="form-field">
+                <mat-label>{{"Institution" | localize}}</mat-label>
+                <mat-select formControlName="institution">
+                  <mat-option>None</mat-option>
+                  @for (institution of institutions; track institution) {
+                  <mat-option [value]="institution.name">{{institution.name}}</mat-option>
+                  }
+                </mat-select>
+                <mat-error *ngIf="jobForm.get('institution').invalid && jobForm.get('institution').touched">
+                  {{"InstitutionRequired"|localize}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field>
+                <mat-label>{{"DutyStation" | localize}}</mat-label>
+                <mat-select formControlName="dutyStation">
+                  <mat-option>None</mat-option>
+                  @for (station of stations; track station) {
+                  <mat-option [value]="station.location">{{station.location }}, {{station.country }}</mat-option>
+                  }
+                </mat-select>
+                <mat-error *ngIf="jobForm.get('dutyStation').invalid && jobForm.get('dutyStation').touched">
+                  {{"DutyStationRequired"|localize}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field>
+                <mat-label>{{"TypeOfEmployment" | localize}}</mat-label>
+                <mat-select formControlName="type">
+                  <mat-option>None</mat-option>
+                  <mat-option value="Permanent">{{"Permanent"|localize}}</mat-option>
+                  <mat-option value="Contract">{{"Contract"|localize}}</mat-option>
+                  <mat-option value="Consultancy">{{"Consultancy"|localize}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="jobForm.get('type').invalid && jobForm.get('type').touched">
+                  {{"TypeOfEmploymentRequired" | localize}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row mb-4">
+            <div class="col">
+              <mat-form-field>
+                <mat-label>{{"Departemnt" | localize}}</mat-label>
+                <input matInput formControlName="department" placeholder="Department">
+                <mat-error *ngIf="jobForm.get('department').invalid && jobForm.get('department').touched">
+                  {{"DepartmentRequired"|localize}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <mat-label>{{"Directorate" | localize}}</mat-label>
+                <input matInput formControlName="directorate" placeholder='{{"Directorate"|localize}}'>
+                <mat-error *ngIf="jobForm.get('directorate').invalid && jobForm.get('directorate').touched">
+                  {{"DirectorateRequired"|localize}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <mat-label>{{"Division" | localize}}</mat-label>
+                <input matInput formControlName="division" placeholder='{{"DivisionPlaceholder"|localize}}'>
+                <mat-error *ngIf="jobForm.get('division').invalid && jobForm.get('division').touched">
+                  {{"Division"|localize}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+
+
+          <mat-form-field>
+            <input matInput formControlName="supervisor" placeholder="Supervisor">
+            <mat-error *ngIf="jobForm.get('supervisor').invalid && jobForm.get('supervisor').touched">
+              Supervisor is required
+            </mat-error>
+          </mat-form-field>
+
+
+          <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+              
+            </div>
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="year" placeholder="Year" type="number">
+            <mat-error *ngIf="jobForm.get('year').invalid && jobForm.get('year').touched">
+              Year is required and must be between 1900 and 2100
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="description" placeholder="Description">
+            <mat-error *ngIf="jobForm.get('description').invalid && jobForm.get('description').touched">
+              Description is required
+            </mat-error>
+          </mat-form-field>
+
+
+
+
+
+          <mat-form-field>
+            <input matInput formControlName="deadline" placeholder="Deadline" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="jobForm.get('deadline').invalid && jobForm.get('deadline').touched">
+              Deadline is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="responsibilities" placeholder="Responsibilities">
+            <mat-error *ngIf="jobForm.get('responsibilities').invalid && jobForm.get('responsibilities').touched">
+              Responsibilities are required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="keyCompetences" placeholder="Key Competences">
+            <mat-error *ngIf="jobForm.get('keyCompetences').invalid && jobForm.get('keyCompetences').touched">
+              Key Competences are required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="requirement" placeholder="Requirement">
+            <mat-error *ngIf="jobForm.get('requirement').invalid && jobForm.get('requirement').touched">
+              Requirement is required
+            </mat-error>
+          </mat-form-field>
+
+
+
+
+
+
+
+          <mat-form-field>
+            <input matInput formControlName="annualSalary" placeholder="Annual Salary" type="number">
+            <mat-error *ngIf="jobForm.get('annualSalary').invalid && jobForm.get('annualSalary').touched">
+              Annual Salary is required and must be a positive number
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="ageLimit" placeholder="Age Limit" type="number">
+            <mat-error *ngIf="jobForm.get('ageLimit').invalid && jobForm.get('ageLimit').touched">
+              Age Limit is required and must be a positive number
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="jobMail" placeholder="Job Mail" type="email">
+            <mat-error *ngIf="jobForm.get('jobMail').invalid && jobForm.get('jobMail').touched">
+              Valid email is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="status">Status</mat-checkbox>
+
+          <button mat-raised-button type="submit" [disabled]="jobForm.invalid">Submit</button>
+        </form>
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- <div class="col-4">
+    <div class="col"></div>
+  </div> -->
+</div>

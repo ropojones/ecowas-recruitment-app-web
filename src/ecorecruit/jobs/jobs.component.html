@@ -1,0 +1,23 @@
+<div class="container-fluid h-100 p-5">
+
+    <div class="row mb-3 w-100">
+     <div class="col">
+            <button mat-flat-button class="mr-2" (click)="addJob()" color="primary"><mat-icon>add</mat-icon> {{"AddJob"|localize}}</button>
+            <button mat-flat-button color="primary"><mat-icon>download</mat-icon> {{"Download"|localize}}</button>
+
+        </div>
+    </div>
+
+    <div class="row h-100">
+        <div class="col-9">
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+        <div class="col-3">
+            <app-job-menu></app-job-menu>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+.form-control {
+    border-radius: 0% !important;
+    padding: 20px 30px !important;
+}
+
+.form-select {
+    border-radius: 0% !important;
+    padding: 10px 30px !important;
+}
+
+
+.form-field, mat-form-field {
+
+    width: 100%;
+}
+
+
