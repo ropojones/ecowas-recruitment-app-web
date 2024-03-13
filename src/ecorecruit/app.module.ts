@@ -73,6 +73,7 @@ import { ShortlistingComponent } from './shortlisting/shortlisting.component';
 import { FilteringComponent } from './filtering/filtering.component';
 import { ScoringComponent } from './scoring/scoring.component';
 import { CertificatesComponent } from './applicant/certificates/certificates.component';
+import { JobDetailComponent } from './jobs/job-detail/job-detail.component';
 
 
 @NgModule({
@@ -134,7 +135,8 @@ import { CertificatesComponent } from './applicant/certificates/certificates.com
     ShortlistingComponent,
     FilteringComponent,
     ScoringComponent,
-    CertificatesComponent
+    CertificatesComponent,
+    JobDetailComponent
   ],
   imports: [
     CommonModule,

@@ -30,6 +30,7 @@ import { JobContainerComponent } from './jobs/job-container/job-container.compon
 import { JobMenuComponent } from './jobs/job-menu/job-menu.component';
 import { DashboardComponent } from './jobs/dashboard/dashboard.component';
 import { CertificatesComponent } from './applicant/certificates/certificates.component';
+import { JobDetailComponent } from './jobs/job-detail/job-detail.component';
 
 @NgModule({
     imports: [
@@ -43,11 +44,13 @@ import { CertificatesComponent } from './applicant/certificates/certificates.com
                         path: 'jobs', component: JobsComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard], children: [
                             { path: 'create', component: CreateJobComponent },
                             { path: 'container', component: JobContainerComponent },
-                            { path: 'bashboard', component: DashboardComponent },
+                            { path: 'dashboard', component: DashboardComponent },
                             { path: 'menu', component: JobMenuComponent },
                             { path: 'list', component: ListJobComponent },
                             { path: 'update', component: UpdateJobComponent },
-                            { path: 'delete', component: DeleteJobComponent }
+                            { path: 'delete', component: DeleteJobComponent },                            
+                            { path: 'details', component: JobDetailComponent },
+                            { path: 'details/:id', component: JobDetailComponent },
                         ]
                     },
 
